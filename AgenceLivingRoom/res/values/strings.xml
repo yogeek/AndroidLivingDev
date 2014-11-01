@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">AgenceLivingRoom</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Paramètres</string>
+    <string name="logo_desc">Logo de l\'application</string>
+    <string name="description">Application mobile de l\'agence immobilière Living Room</string>
+    <string name="notificationsPush">Notifications push</string>
+    <string name="boutonValider">Valider</string>
+	<string name="boutonModifier">Modifier</string>
+	<string name="boutonAnnuler">Annuler</string>
+	<string name="trouverUnBien">Trouver un bien</string>
+	<string name="mesRecherches">Mes recherches</string>
+	<string name="surLaCarte">Sur la carte</string>
+	<string name="contact">Contact</string>
+	<string name="accueil">Accueil</string>
+	<string name="siteWeb">Site Web</string>
+	<string name="infos">Infos</string>
+	<string name="parametres">Paramètres</string>
+	
+</resources>

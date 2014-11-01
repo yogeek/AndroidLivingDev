@@ -1,0 +1,55 @@
+<resources>
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="@style/Theme.AppCompat.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    
+    <!-- SlashScreen theme -->
+    <style name="Theme.Transparent" parent="android:Theme">
+        <item name="android:windowIsTranslucent">false</item>
+        <!-- item name="android:windowBackground">@android:color/transparent</item-->
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <!-- item name="android:windowAnimationStyle">@style/Animations.SplashScreen</item-->
+    </style>
+    
+    <!-- SplashScreen animation -->
+    <style name="Animations" parent="@android:Animation" />
+    <style name="Animations.SplashScreen">
+        <item name="android:windowEnterAnimation">@anim/appear</item>
+        <item name="android:windowExitAnimation">@anim/disappear</item> 
+    </style>
+    
+    <!-- Setting theme -->
+    
+    <!-- general styles for the action bar -->
+    <style name="MyActionBarTheme" parent="@style/Widget.AppCompat.ActionBar">
+
+        <!-- Support library compatibility -->
+        <item name="titleTextStyle">@style/TitleTextStyle</item>
+        <item name="background">@color/brown_livingroom_light</item>
+    </style>
+    
+    <!-- action bar title text -->
+    <style name="TitleTextStyle"
+           parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+</resources>

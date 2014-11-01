@@ -1,0 +1,91 @@
+package com.yogidev.android.livingroom;
+
+import android.annotation.TargetApi;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
+
+@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+public class HomeActivity extends ActionBarActivity {
+	
+	private static final int SETTING_OPTIONS_CODE = 1;
+	// L'identifiant de la chaîne de caractères qui contient le résultat de l'intent
+	public final static String SETTINGS_BUTTONS = "com.yogidev.android.intent.settings.Boutons";
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_home);
+		
+		// Use of the "logo" defined in the Manifest instead of the default "icon" for the ActionBar
+		getActionBar().setDisplayUseLogoEnabled(true);
+		
+		if (savedInstanceState == null) {
+			getSupportFragmentManager().beginTransaction()
+					.add(R.id.container, new PlaceholderFragment()).commit();
+		}
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.home, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			
+			// Launch Settings Activity
+			Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
+			startActivityForResult(intent, SETTING_OPTIONS_CODE);
+			
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// On vérifie tout d'abord à quel intent on fait référence ici à l'aide de notre identifiant
+	    if (requestCode == SETTING_OPTIONS_CODE) {
+	      // On vérifie aussi que l'opération s'est bien déroulée
+	      if (resultCode == RESULT_OK) {
+	        // On affiche le bouton qui a été choisi
+	      	Toast.makeText(this, "Les notifications ont été " + ((data.getStringExtra(SETTINGS_BUTTONS).equals(SettingsActivity.NOTIFICATION_ON))?"activées":"désactivées"), Toast.LENGTH_SHORT).show();
+	      }
+	    }
+	}
+
+
+
+	/**
+	 * A placeholder fragment containing a simple view.
+	 */
+	public static class PlaceholderFragment extends Fragment {
+
+		public PlaceholderFragment() {
+		}
+
+		@Override
+		public View onCreateView(LayoutInflater inflater, ViewGroup container,
+				Bundle savedInstanceState) {
+			View rootView = inflater.inflate(R.layout.fragment_home, container,
+					false);
+			return rootView;
+		}
+	}
+}
