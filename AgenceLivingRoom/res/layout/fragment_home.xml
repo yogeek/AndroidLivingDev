@@ -45,7 +45,8 @@
 	                android:layout_width="match_parent"
 	                android:layout_height="wrap_content"
 	                android:background="@android:color/transparent"
-	                android:src="@drawable/loupe" />
+	                android:src="@drawable/loupe"
+	                android:onClick="onFindClicked" />
 
 	            <Button
 	                android:id="@+id/button1"
@@ -53,7 +54,8 @@
 	                android:layout_height="wrap_content"
 	                android:layout_margin="10dp"
 	                android:background="@android:color/background_light"
-	                android:text="@string/trouverUnBien" />
+	                android:text="@string/trouverUnBien"
+	                android:onClick="onFindClicked" />
 	        
 	        </LinearLayout>
             

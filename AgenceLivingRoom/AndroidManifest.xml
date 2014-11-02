@@ -46,6 +46,16 @@
                 android:value=".HomeActivity" />
         </activity>
         
+        <activity
+            android:name="ReferenceListActivity"
+            android:parentActivityName=".HomeActivity" 
+            >
+            <!-- Parent activity meta-data to support API level 7+ -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomeActivity" />
+        </activity>
+        
     </application>
 
 </manifest>

@@ -4,8 +4,6 @@ import java.net.URL;
 import java.util.Date;
 import java.util.List;
 
-import android.media.Image;
-
 import com.yogidev.android.livingroom.data.util.Coordinate;
 
 /**
@@ -57,7 +55,7 @@ public class Reference {
 	// Equipements
 	private List<String> listeEquipements = null;
 	// Vignette/Photo
-	private Image vignette = null;
+	private String vignette = null;
 	// Video youtube
 	private URL videoYoutube = null;
 	// Disponible ?
@@ -77,6 +75,19 @@ public class Reference {
 	 * Constructeur
 	 * 
 	 */
+	
+	public Reference(long id, String titreRef, String typeRef, String ville,
+			String quartier, int loyerOuPrix, double surface, String vignette) {
+		this.id = id;
+		this.titreRef = titreRef;
+		this.typeRef = typeRef;
+		this.ville = ville;
+		this.quartier = quartier;
+		this.loyerOuPrix = loyerOuPrix;
+		this.surface = surface;
+		this.vignette = vignette;
+	}
+	
 
 	public Reference(long id, String titreRef, String typeRef,
 			String titreAdmin, String infoInterne, String locVente,
@@ -84,7 +95,7 @@ public class Reference {
 			int loyerOuPrix, int chargesOuCopro, int depotOuTaxe,
 			double fraisAgence, Coordinate latLon, String descriptif,
 			double surface, int nbLotCopro, String dpe, String ges,
-			List<String> listeEquipements, Image vignette, URL videoYoutube,
+			List<String> listeEquipements, String vignette, URL videoYoutube,
 			boolean disponible, boolean nouveaute, boolean visible,
 			Date libreDate) {
 		super();
@@ -116,6 +127,7 @@ public class Reference {
 		this.libreDate = libreDate;
 	}
 	
+
 	/**
 	 * toString()
 	 */
@@ -381,12 +393,12 @@ public class Reference {
 	}
 
 
-	public Image getVignette() {
+	public String getVignette() {
 		return vignette;
 	}
 
 
-	public void setVignette(Image vignette) {
+	public void setVignette(String vignette) {
 		this.vignette = vignette;
 	}
 

@@ -17,6 +17,8 @@ import android.widget.Toast;
 public class HomeActivity extends ActionBarActivity {
 	
 	private static final int SETTING_OPTIONS_CODE = 1;
+	private static final int REFERENCE_OPTIONS_CODE = 2;
+	
 	// L'identifiant de la chaîne de caractères qui contient le résultat de l'intent
 	public final static String SETTINGS_BUTTONS = "com.yogidev.android.intent.settings.Boutons";
 
@@ -32,6 +34,12 @@ public class HomeActivity extends ActionBarActivity {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
+	}
+	
+	public void onFindClicked(View view) {
+		// Launch ReferenceListActivity
+		Intent intent = new Intent(HomeActivity.this, ReferenceListActivity.class);
+		startActivityForResult(intent, REFERENCE_OPTIONS_CODE);
 	}
 
 	@Override
@@ -69,6 +77,8 @@ public class HomeActivity extends ActionBarActivity {
 	      }
 	    }
 	}
+	
+	
 
 
 
@@ -87,5 +97,6 @@ public class HomeActivity extends ActionBarActivity {
 					false);
 			return rootView;
 		}
+		
 	}
 }
