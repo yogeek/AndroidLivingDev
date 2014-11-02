@@ -3,6 +3,7 @@ package com.yogidev.android.livingroom;
 import java.util.ArrayList;
 
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -19,15 +20,57 @@ public class ReferenceListActivity extends ActionBarActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
-	    setContentView(R.layout.referencelistview);
+	    setContentView(R.layout.reference_list_view);
+	    
+	    // Retrieve Bundle object
+        final Bundle objetbunble  = getIntent().getExtras();
+        
+        // get content of the "recherche" object
+        String[] rechercheDetails = (String[]) objetbunble.get("recherche");
+        
+        // AlertDialog to display the content
+		AlertDialog.Builder adbRechercheContent = new AlertDialog.Builder(this);
+		adbRechercheContent.setTitle("Détails de la recherche");
+		adbRechercheContent.setPositiveButton("Ok", null);
+		String message = "Ville : "    + rechercheDetails[0] + "/n";
+		message 	  += "Quartier : " + rechercheDetails[1] + "/n";
+		message 	  += "Type : "     + rechercheDetails[2] + "/n";
+		message 	  += "Location : " + rechercheDetails[3] + "/n";
+		message 	  += "Loyer : " + rechercheDetails[4] + "/n";
+		adbRechercheContent.setMessage(message);
+		adbRechercheContent.show();
 	    
 	    // ref
-	    Reference r1 = new Reference(1, "T3 - 60 m² NEUF BBC, avec 1 parking", "T3", "Toulouse", "Les Chalets", 194250, 60, "http://www.agence-livingroom.com/references/1042/photo_reference.jpg");
-	    Reference r2 = new Reference(1, "T2 - 51m² avec parking", "T3", "Toulouse", "Argoulets", 115000, 51, "http://www.agence-livingroom.com/references/1057/photo_reference.jpg");
-	    Reference r3 = new Reference(1, "T4 - 90 m²", "T4", "Toulouse", "Matabiau", 253150, 90, "http://www.agence-livingroom.com/references/1100/photo_reference.jpg");
-	    Reference r4 = new Reference(1, "T1 - 20 m² ", "T1", "Toulouse", "Hypercentre", 85000, 20, "http://www.agence-livingroom.com/references/1110/photo_reference.jpg");
+	    Reference r1 = new Reference(1, "T3 - 60 m² NEUF BBC, avec 1 parking", "T3", "Toulouse", "Les Chalets", "Vente", 194250, 60, "http://www.agence-livingroom.com/references/1042/photo_reference.jpg");
+	    Reference r2 = new Reference(1, "T2 - 51m² avec parking", "T3", "Toulouse", "Argoulets", "Location", 800, 51, "http://www.agence-livingroom.com/references/1057/photo_reference.jpg");
+	    Reference r3 = new Reference(1, "T4 - 90 m²", "T4", "Toulouse", "Matabiau", "Vente", 253150, 90, "http://www.agence-livingroom.com/references/1100/photo_reference.jpg");
+	    Reference r4 = new Reference(1, "T1 - 20 m² ", "T1", "Toulouse", "Hypercentre", "Location", 350, 20, "http://www.agence-livingroom.com/references/1110/photo_reference.jpg");
 
 	    final ArrayList<Reference> list = new ArrayList<Reference>();
+	    list.add(r1);
+	    list.add(r2);
+	    list.add(r3);
+	    list.add(r4);
+	    list.add(r1);
+	    list.add(r2);
+	    list.add(r3);
+	    list.add(r4);
+	    list.add(r1);
+	    list.add(r2);
+	    list.add(r3);
+	    list.add(r4);
+	    list.add(r1);
+	    list.add(r2);
+	    list.add(r3);
+	    list.add(r4);
+	    list.add(r1);
+	    list.add(r2);
+	    list.add(r3);
+	    list.add(r4);
+	    list.add(r1);
+	    list.add(r2);
+	    list.add(r3);
+	    list.add(r4);
 	    list.add(r1);
 	    list.add(r2);
 	    list.add(r3);

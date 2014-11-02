@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="Tous">Tous les prix</string>
+    <string name="LoyerInferieur500">Loyer inférieur à 500€</string>
+	<string name="LoyerInferieur700">Loyer inférieur à 700€</string>
+	<string name="LoyerInferieur1100">Loyer inférieur à 1100€</string>
+	<string name="LoyerInferieur1300">Loyer inférieur à 1300€</string>
+	
+	<string-array name="loyers_array">
+	    <item>Tous les prix</item>
+	    <item>Loyer inférieur à 500€ CC</item>
+		<item>Loyer inférieur à 700€ CC</item>
+		<item>Loyer inférieur à 1100€ CC</item>
+		<item>Loyer inférieur à 1300€ CC</item>
+	</string-array>
+    
+</resources>

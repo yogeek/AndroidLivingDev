@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="Tous">Tous les quartiers</string>
+    <string name="Amidonniers">Amidonniers</string>
+    <string name="Bonnefoy">Bonnefoy</string>
+    <string name="Borderouge">Borderouge</string>
+    <string name="Busca">Busca</string>
+    <string name="Carmes">Carmes</string>
+    <string name="Chapitre">Chapitre</string>
+    <string name="GrandSelve">Grand Selve</string>
+    <string name="LaTerrasse">La Terrasse</string>
+    <string name="LaVache">La Vache</string>
+    <string name="Lalande">Lalande</string>
+    <string name="LesChalets">Les Chalets</string>
+    <string name="Minimes">Minimes</string>
+    <string name="Montaudran">Montaudran</string>
+    <string name="Rangueil">Rangueil</string>
+    
+    <string-array name="quartiers_array">
+        <item>Tous les quartiers</item>
+        <item>Amidonniers</item>
+        <item>Bonnefoy</item>
+        <item>Borderouge</item>
+        <item>Busca</item>
+        <item>Carmes</item>
+        <item>Chapitre</item>
+        <item>Grand Selve</item>
+	    <item>La Terrasse</item>
+	    <item>La Vache</item>
+	    <item>Lalande</item>
+	    <item>Les Chalets</item>
+	    <item>Minimes</item>
+	    <item>Montaudran</item>
+	    <item>Rangueil</item>
+    </string-array>
+    
+</resources>

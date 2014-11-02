@@ -1,6 +1,7 @@
 package com.yogidev.android.livingroom.data.bean;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -16,54 +17,85 @@ public class Reference {
 	
 	// Ref
 	private long id = 0;
+	
 	// Titre de la référence
 	private String titreRef = "";
+	
 	// Type de référence
 	private String typeRef = "";
+	
 	// Titre pour l'administrateur (non vu par les visiteurs)
 	private String titreAdmin = "";
+	
 	// Information interne
 	private String infoInterne = "";
+	
 	// Location ou Vente
 	private String locVente = "";
+	
+	// isLocation
+	private boolean isLocation = true;
+	
 	// Appartement ou Maison
 	private String appartementMaison = "";
+	
 	// Ville
 	private String ville = "";
+	
 	// Quartier
 	private String quartier = "";
+	
 	// Loyer charges comprises (ou Prix FAI dans le cas d'une vente)
 	private int loyerOuPrix = 0;
+	
 	// Charges (ou Charges de copropriété dans le cas d'une vente)
 	private int chargesOuCopro = 0;
+	
 	// Dépôt de garantie (ou taxe foncière dans le cas d'une vente)
 	private int depotOuTaxe = 0;
+	
 	// Frais d'agence (en % dans le cas d'une vente)
 	private double fraisAgence = 0.0;
+	
 	// Latitude/Longitude
 	private Coordinate latLon = null;
+	
 	// Descriptif
 	private String descriptif = "";
+	
 	// Surface (en m2)
 	private double surface = 0.0;
+	
 	// Nombre de lots de la copropriété
 	private int nbLotCopro = 0;
+	
 	// DPE
 	private String dpe = "";
+	
 	// GES
 	private String ges = "";
+	
 	// Equipements
 	private List<String> listeEquipements = null;
-	// Vignette/Photo
+	
+	// URL Vignette
 	private String vignette = null;
+	
+	// Liste des URL des photos
+	private ArrayList<String> photos = null;
+	
 	// Video youtube
 	private URL videoYoutube = null;
+	
 	// Disponible ?
 	private boolean disponible = true;
+	
 	// Nouveauté ?
 	private boolean nouveaute = true;
+	
 	// Visible ?
 	private boolean visible = true;
+	
 	// Libre à partir du
 	private Date libreDate = null;
 	
@@ -77,15 +109,29 @@ public class Reference {
 	 */
 	
 	public Reference(long id, String titreRef, String typeRef, String ville,
-			String quartier, int loyerOuPrix, double surface, String vignette) {
+			String quartier, String locVente, int loyerOuPrix, double surface, String vignette) {
 		this.id = id;
 		this.titreRef = titreRef;
 		this.typeRef = typeRef;
 		this.ville = ville;
 		this.quartier = quartier;
+		this.setLocVente(locVente);
 		this.loyerOuPrix = loyerOuPrix;
 		this.surface = surface;
 		this.vignette = vignette;
+		this.photos = new ArrayList<String>();
+	}
+	
+	public void addPhoto(String photo) {
+		this.photos.add(photo);
+	}
+	
+	public void addPhotoList(ArrayList photoList) {
+		this.photos.addAll(photoList);
+	}
+	
+	public void removePhoto(String photo) {
+		this.photos.remove(photo);
 	}
 	
 
@@ -200,6 +246,18 @@ public class Reference {
 
 	public void setLocVente(String locVente) {
 		this.locVente = locVente;
+		setLocation(locVente.equals("Location"));
+	}
+	
+	
+	public boolean isLocation() {
+		return this.locVente.equals("Location");
+	}
+
+
+	public void setLocation(boolean isLocation) {
+		this.isLocation = isLocation;
+		this.locVente = isLocation?"Location":"Vente";
 	}
 
 
@@ -346,6 +404,10 @@ public class Reference {
 	public double getSurface() {
 		return surface;
 	}
+	
+	public int getSurfaceInteger() {
+		return (int)surface;
+	}
 
 
 	public void setSurface(double surface) {
@@ -420,6 +482,16 @@ public class Reference {
 
 	public void setLibreDate(Date libreDate) {
 		this.libreDate = libreDate;
+	}
+
+
+	public ArrayList<String> getPhotos() {
+		return photos;
+	}
+
+
+	public void setPhotos(ArrayList<String> photos) {
+		this.photos = photos;
 	}
 
 

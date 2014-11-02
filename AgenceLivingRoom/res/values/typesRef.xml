@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="Tous">Tous les types</string>
+    <string name="T1">T1</string>
+    <string name="T2">T2</string>
+    <string name="T3">T3</string>
+    <string name="T4">T4</string>
+    <string name="T5">T5</string>
+    
+    <string-array name="types_array">
+        <item>Tous les types</item>
+	    <item>T1</item>
+	    <item>T2</item>
+	    <item>T3</item>
+	    <item>T4</item>
+	    <item>T5</item>
+    </string-array>
+    
+</resources>

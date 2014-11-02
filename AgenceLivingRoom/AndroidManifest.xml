@@ -7,6 +7,8 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="21" />
+    
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -47,13 +49,23 @@
         </activity>
         
         <activity
-            android:name="ReferenceListActivity"
+            android:name="FindReferenceActivity"
             android:parentActivityName=".HomeActivity" 
             >
             <!-- Parent activity meta-data to support API level 7+ -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".HomeActivity" />
+        </activity>
+        
+        <activity
+            android:name="ReferenceListActivity"
+            android:parentActivityName=".FindReferenceActivity" 
+            >
+            <!-- Parent activity meta-data to support API level 7+ -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".FindReferenceActivity" />
         </activity>
         
     </application>

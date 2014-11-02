@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+ 
+ 	
+	<!-- Choix de la ville -->
+   	
+    <TextView android:id="@+id/TextViewVille"
+   	android:layout_width="fill_parent"
+   	android:layout_height="wrap_content"
+   	android:text="@string/choixVille"
+   	android:layout_marginTop="30dp"
+   	/>
+
+   	 <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        >
+	     <Spinner android:id="@+id/SpinnerVille"
+    		android:layout_width="fill_parent"
+    		android:layout_height="wrap_content"
+    		android:prompt="@string/promptVille"
+    		android:entries="@array/villes_array"
+    	 />
+	</LinearLayout>
+	
+   	<!-- Choix du quartier -->
+   	
+    <TextView android:id="@+id/TextViewQuartier"
+   	android:layout_width="fill_parent"
+   	android:layout_height="wrap_content"
+   	android:text="@string/choixQuartier"
+   	android:layout_marginTop="30dp"
+   	/>
+
+   	 <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        >
+	     <Spinner android:id="@+id/SpinnerQuartier"
+    		android:layout_width="fill_parent"
+    		android:layout_height="wrap_content"
+    		android:prompt="@string/promptQuartier"
+    		android:entries="@array/quartiers_array"
+    	 />
+	</LinearLayout>
+	
+    <!-- Choix du Type -->
+   	
+    <TextView android:id="@+id/TextViewType"
+   	android:layout_width="fill_parent"
+   	android:layout_height="wrap_content"
+   	android:text="@string/choixType"
+   	android:layout_marginTop="30dp"
+   	/>
+
+   	 <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        >
+	     <Spinner android:id="@+id/SpinnerType"
+    		android:layout_width="fill_parent"
+    		android:layout_height="wrap_content"
+    		android:prompt="@string/promptType"
+    		android:entries="@array/types_array"
+    	 />
+	</LinearLayout>
+	
+   	<!-- Choix du loyer -->
+   	
+   	 <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        >
+	     
+	     <!-- A louer ou A vendre ? -->
+	     <ToggleButton android:id="@+id/ToggleLocationVente"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:textOn="@string/choixLouer"
+		    android:textOff="@string/choixVendre"
+		    android:checked="true"
+		    android:layout_gravity="center_vertical"
+		    android:onClick="onToggleLocationVenteClicked"
+		 />
+   	     
+	     <Spinner android:id="@+id/SpinnerLoyer"
+    		android:layout_width="fill_parent"
+    		android:layout_height="wrap_content"
+    		android:prompt="@string/promptLoyer"
+    		android:entries="@array/loyers_array"
+    	 />
+	</LinearLayout>
+	
+	
+	<!-- Bouton RECHERCHER -->
+	<!-- <Button android:id="@+id/ButtonRechercher"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="100dp"
+		android:layout_gravity="center"
+		android:background="@drawable/btn_rechercher"
+		android:contentDescription="@string/buttonRechercherDesc"
+	/>
+ -->	
+	<!-- ImageBouton RECHERCHER -->
+	<ImageButton android:id="@+id/ButtonRechercher"
+		android:layout_width="200dp"
+		android:layout_height="30dp"
+		android:layout_marginTop="100dp"
+		android:layout_gravity="center"
+		android:scaleType="centerCrop"
+		android:background="@android:color/transparent"
+		android:src="@drawable/btn_rechercher"
+		android:contentDescription="@string/buttonRechercherDesc"
+	/>
+
+</LinearLayout>

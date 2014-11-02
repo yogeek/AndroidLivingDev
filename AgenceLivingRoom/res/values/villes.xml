@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="Toulouse">Toulouse</string>
+    <string name="TegionToulousaine">Région Toulousaine</string>
+    <string name="Aucamville">Aucamville</string>
+    <string name="GagnacSurGaronne">Gagnac-sur-Garonne</string>
+    <string name="Lherm">Lherm</string>
+    <string name="Seysses">Seysses</string>
+    <string name="Tournefeuille">Tournefeuille</string>
+    
+    <string-array name="villes_array">
+        <item>Toulouse</item>
+        <item>Région Toulousaine</item>
+        <item>Aucamville</item>
+        <item>Gagnac-sur-Garonne</item>
+        <item>Lherm</item>
+        <item>Seysses</item>
+        <item>Tournefeuille</item>
+    </string-array>
+    
+</resources>

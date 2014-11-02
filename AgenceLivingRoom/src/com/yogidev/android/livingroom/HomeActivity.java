@@ -17,7 +17,7 @@ import android.widget.Toast;
 public class HomeActivity extends ActionBarActivity {
 	
 	private static final int SETTING_OPTIONS_CODE = 1;
-	private static final int REFERENCE_OPTIONS_CODE = 2;
+	private static final int FIND_REFERENCE_OPTIONS_CODE = 2;
 	
 	// L'identifiant de la chaîne de caractères qui contient le résultat de l'intent
 	public final static String SETTINGS_BUTTONS = "com.yogidev.android.intent.settings.Boutons";
@@ -38,8 +38,8 @@ public class HomeActivity extends ActionBarActivity {
 	
 	public void onFindClicked(View view) {
 		// Launch ReferenceListActivity
-		Intent intent = new Intent(HomeActivity.this, ReferenceListActivity.class);
-		startActivityForResult(intent, REFERENCE_OPTIONS_CODE);
+		Intent intent = new Intent(HomeActivity.this, FindReferenceActivity.class);
+		startActivityForResult(intent, FIND_REFERENCE_OPTIONS_CODE);
 	}
 
 	@Override
@@ -79,9 +79,6 @@ public class HomeActivity extends ActionBarActivity {
 	}
 	
 	
-
-
-
 	/**
 	 * A placeholder fragment containing a simple view.
 	 */
@@ -93,8 +90,7 @@ public class HomeActivity extends ActionBarActivity {
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_home, container,
-					false);
+			View rootView = inflater.inflate(R.layout.fragment_home, container,	false);
 			return rootView;
 		}
 		
