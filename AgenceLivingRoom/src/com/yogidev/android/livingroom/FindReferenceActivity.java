@@ -114,9 +114,9 @@ public class FindReferenceActivity extends ActionBarActivity {
 	    // Set title
 	    actionBar.setTitle("Trouver un bien");
 	    // Set logo
-	    actionBar.setLogo(R.drawable.loupe);
+	    //actionBar.setLogo(R.drawable.loupe);
+	    actionBar.setDisplayUseLogoEnabled(true);
 	    
-	
 	}
 	
 

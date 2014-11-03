@@ -51,30 +51,6 @@ public class ReferenceListActivity extends ActionBarActivity {
 	    list.add(r2);
 	    list.add(r3);
 	    list.add(r4);
-	    list.add(r1);
-	    list.add(r2);
-	    list.add(r3);
-	    list.add(r4);
-	    list.add(r1);
-	    list.add(r2);
-	    list.add(r3);
-	    list.add(r4);
-	    list.add(r1);
-	    list.add(r2);
-	    list.add(r3);
-	    list.add(r4);
-	    list.add(r1);
-	    list.add(r2);
-	    list.add(r3);
-	    list.add(r4);
-	    list.add(r1);
-	    list.add(r2);
-	    list.add(r3);
-	    list.add(r4);
-	    list.add(r1);
-	    list.add(r2);
-	    list.add(r3);
-	    list.add(r4);
 	    final ReferenceListAdapter adapter = new ReferenceListAdapter(this, list);
 	    
 	    // List View des references
@@ -105,10 +81,12 @@ public class ReferenceListActivity extends ActionBarActivity {
 	    ActionBar actionBar = getSupportActionBar();
 	    // Enable the app icon as an Up button
 	    actionBar.setDisplayHomeAsUpEnabled(true);
+	    
 	    // Set title
 	    actionBar.setTitle("References");
 	    // Set logo
-	    actionBar.setLogo(R.drawable.partage);
+	    //actionBar.setLogo(R.drawable.partage);
+	    actionBar.setDisplayUseLogoEnabled(true);
 	    
 	
 	}

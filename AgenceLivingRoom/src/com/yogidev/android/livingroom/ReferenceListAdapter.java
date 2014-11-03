@@ -50,12 +50,16 @@ public class ReferenceListAdapter extends ArrayAdapter<Reference> {
 			new DownloadImageTask(imgView).execute(ref.getVignette());
 			
 			// Title
-			TextView textView = (TextView) view.findViewById(R.id.firstLine);
-			textView.setText(ref.getVille() + " - " + ref.getQuartier());
+			TextView firstLine = (TextView) view.findViewById(R.id.firstLine);
+			firstLine.setText(ref.getVille() + " - " + ref.getQuartier());
 			// Details
-			TextView textView2 = (TextView) view.findViewById(R.id.secondLine);
+			TextView secondLine = (TextView) view.findViewById(R.id.secondLine);
+			secondLine.setText(ref.getTypeRef() + " - " + ref.getSurfaceInteger() + "m²");	
+			// Prix
+			TextView thirdLine = (TextView) view.findViewById(R.id.thirdLine);
 			String prix = ref.getLoyerOuPrix() + "€" + (ref.isLocation()?"/mois":"");
-			textView2.setText(ref.getTypeRef() + " - " + ref.getSurfaceInteger() + "m²" + " - " + prix);	
+			thirdLine.setText(prix);
+			
 		}
 		return view;
 	}

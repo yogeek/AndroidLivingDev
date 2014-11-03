@@ -43,13 +43,13 @@
 
         <!-- Support library compatibility -->
         <item name="titleTextStyle">@style/TitleTextStyle</item>
-        <item name="background">@color/brown_livingroom_light</item>
+        <!-- item name="background">@color/brown_livingroom_light</item-->
     </style>
     
     <!-- action bar title text -->
-    <style name="TitleTextStyle"
-           parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
-        <item name="android:textColor">@color/black</item>
+    <style name="TitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/brown_livingroom_dark</item>
+        <item name="android:homeAsUpIndicator">@android:id/up</item>
     </style>
 
 </resources>
