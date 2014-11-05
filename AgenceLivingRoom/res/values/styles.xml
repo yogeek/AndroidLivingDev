@@ -11,6 +11,22 @@
             backward-compatibility can go here.
         -->
     </style>
+    
+        <!-- Setting theme -->
+    
+    <!-- general styles for the action bar -->
+    <style name="myTheme" parent="@style/Widget.AppCompat.ActionBar">
+
+        <!-- Support library compatibility -->
+        <item name="titleTextStyle">@style/TitleTextStyle</item>
+        <item name="background">@color/brown_livingroom_light</item>
+    </style>
+    
+    <!-- action bar title text -->
+    <style name="TitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/white</item>
+        <!-- item name="android:homeAsUpIndicator">@android:id/up</item-->
+    </style>
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
@@ -36,20 +52,5 @@
         <item name="android:windowExitAnimation">@anim/disappear</item> 
     </style>
     
-    <!-- Setting theme -->
-    
-    <!-- general styles for the action bar -->
-    <style name="MyActionBarTheme" parent="@style/Widget.AppCompat.ActionBar">
-
-        <!-- Support library compatibility -->
-        <item name="titleTextStyle">@style/TitleTextStyle</item>
-        <!-- item name="background">@color/brown_livingroom_light</item-->
-    </style>
-    
-    <!-- action bar title text -->
-    <style name="TitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
-        <item name="android:textColor">@color/brown_livingroom_dark</item>
-        <item name="android:homeAsUpIndicator">@android:id/up</item>
-    </style>
 
 </resources>

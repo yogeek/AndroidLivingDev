@@ -5,23 +5,20 @@
         AppBaseTheme from BOTH res/values/styles.xml and
         res/values-v11/styles.xml on API 14+ devices.
     -->
-    <style name="AppBaseTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
-        <!-- API 14 theme customizations can go here. -->
-         <item name="android:actionBarStyle">@style/MyActionBarTheme</item>
-    </style>
     
-    <!-- Action Bar -->
-    <style name="MyActionBarTheme"
-           parent="@style/Widget.AppCompat.ActionBar">
-        <item name="android:titleTextStyle">@style/TitleTextStyle</item>
-        <!-- item name="android:background">@color/brown_livingroom_light</item-->
+    <style name="myTheme" parent="@android:style/Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/myTheme.ActionBar</item>
+        <!-- item name="android:actionMenuTextColor">@color/actionBarText</item-->
     </style>
-    
-    <!-- action bar title text -->
-    <style name="TitleTextStyle"
-           parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
-        <item name="android:textColor">@color/brown_livingroom_dark</item>
-        <item name="android:homeAsUpIndicator">@android:id/up</item>
+
+    <style name="myTheme.ActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="background">@color/brown_livingroom_light</item>
+        <item name="android:titleTextStyle">@style/myTheme.ActionBar.Text</item>
+        <!-- item name="android:homeAsUpIndicator">@drawable/abc_ic_ab_back_holo_dark</item-->
+    </style>
+
+    <style name="myTheme.ActionBar.Text" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/white</item>
     </style>
 
 </resources>

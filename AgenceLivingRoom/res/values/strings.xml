@@ -2,16 +2,22 @@
 <resources>
 
     <string name="app_name">AgenceLivingRoom</string>
-    <string name="hello_world">Hello world!</string>
+    
     <string name="action_settings">Paramètres</string>
+    <string name="action_about">A propos</string>
+    <string name="action_infos">Infos</string>
+    
     <string name="logo_desc">Logo de l\'application</string>
     <string name="description">Application mobile de l\'agence immobilière Living Room</string>
     <string name="buttonRechercherDesc">Image pour le bouton Rechercher</string>
+    
     <string name="notificationsPush">Notifications push</string>
+    
     <string name="boutonValider">Valider</string>
     <string name="boutonRechercher">Rechercher</string>
 	<string name="boutonModifier">Modifier</string>
 	<string name="boutonAnnuler">Annuler</string>
+	
 	<string name="trouverUnBien">Trouver un bien</string>
 	<string name="mesRecherches">Mes recherches</string>
 	<string name="surLaCarte">Sur la carte</string>
@@ -33,10 +39,12 @@
 	<string name="promptLoyer">Choisir le loyer CC</string>
 	
 	<string name="contactMailMessage">Envoyez-nous votre message, nous vous répondrons par email.</string>
-	<string name="aProposAdresse">Bureaux de l\'agence: 8 rue Ingres - 31 000 Toulouse</string>
-	<string name="aProposMail">Mail: contact@agence-livingroom.com</string>
-	<string name="aProposTelephone">Téléphone: 06.38.54.09.23 - Fax: 09.72.43.83.72</string>
-	<string name="aProposSociete">Agence LivingRoom est une marque de la société USUFREE SARL au capital de 2 000 euros,
+	
+	<string name="infoAdresse">Bureaux de l\'agence: <a href="http://www.google.fr/maps/place/8+Rue+Ingres,+31000+Toulouse/">8 Rue Ingres, 31000 Toulouse</a></string>
+	<string name="infoMail">contact@agence-livingroom.com</string>
+	<string name="infoTelephone">Téléphone: 06.38.54.09.23</string>
+	<string name="infoFax">Fax: 09.72.43.83.72</string>
+	<string name="infoSociete">Agence LivingRoom est une marque de la société USUFREE SARL au capital de 2 000 euros,
 	    Le siège social est à AUREVILLE (31320) – Le bois grand, immatriculée au Registre du Commerce et des Sociétés de TOULOUSE
 	    Identifiée sous le numéro SIREN 493 889 315, titulaire de la carte G0675 délivrée par la Préfecture de Haute Garonne</string>
 	

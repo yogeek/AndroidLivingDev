@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-    <string name="Tous">Tous les prix</string>
+    <string name="TousLesPrix">Tous les prix</string>
     <string name="LoyerInferieur500">Loyer inférieur à 500€</string>
 	<string name="LoyerInferieur700">Loyer inférieur à 700€</string>
 	<string name="LoyerInferieur1100">Loyer inférieur à 1100€</string>

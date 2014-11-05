@@ -3,18 +3,18 @@ package com.yogidev.android.livingroom;
 import java.util.ArrayList;
 
 import android.annotation.TargetApi;
+import android.app.ActionBar;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.yogidev.android.livingroom.data.bean.Reference;
 
-public class ReferenceListActivity extends ActionBarActivity {
+public class ReferenceListActivity extends Activity {
 	
 	/** Called when the activity is first created. */
 	@Override
@@ -78,7 +78,7 @@ public class ReferenceListActivity extends ActionBarActivity {
  
 	    
 	    // Get the Action Bar 
-	    ActionBar actionBar = getSupportActionBar();
+	    ActionBar actionBar = getActionBar();
 	    // Enable the app icon as an Up button
 	    actionBar.setDisplayHomeAsUpEnabled(true);
 	    

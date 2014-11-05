@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+	<TableLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:id="@+id/infoLayout"
+	    android:orientation="vertical"
+	    android:background="@color/white" >
+	    
+	    <!-- Adress -->
+	    
+	    <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp" >
+	    
+	    <ImageView 
+	        android:id="@+id/imageInfoAdress"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/mail_box" />
+	    
+	    </TableRow>
+	    
+	    <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp" >
+	    
+	    <TextView
+	        android:id="@+id/textInfoAdress"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/infoAdresse"
+	        android:linksClickable="true" />
+	    
+	    </TableRow>
+	    
+		<!-- Company -->
+	    
+	    <TableRow
+            android:id="@+id/tableRow7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp" >
+	    
+	    <ImageView 
+	        android:id="@+id/imageInfoSociete"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/building_icon" />
+	    
+	    </TableRow>
+	    
+	    <TableRow
+            android:id="@+id/tableRow8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp" >
+	    
+	    <TextView
+	        android:id="@+id/textInfoSociete"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/infoSociete" />
+	    
+	    </TableRow>
+	    
+	    <!-- Mail -->
+	    
+	    <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp" >
+	    
+	    <ImageView 
+	        android:id="@+id/imageInfoMail"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/arobase" />
+	    
+	    </TableRow>
+	    
+	    <TableRow
+            android:id="@+id/tableRow5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp" >
+	    
+	    <TextView
+	        android:id="@+id/textInfoMail"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/infoMail"
+	        android:autoLink="email" />
+	    
+	    </TableRow>
+
+	    <!-- Telephone -->
+	    
+	    <TableRow
+            android:id="@+id/tableRow10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp" >
+	    
+	    <ImageView 
+	        android:id="@+id/imageInfoTelephone"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/telephone" />
+	    
+	    </TableRow>
+	    
+	    <TableRow
+            android:id="@+id/tableRow11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+	    
+	        <LinearLayout 
+	            android:orientation="vertical"
+        		android:layout_width="fill_parent"
+        		android:layout_height="wrap_content" >
+	    
+			    <TextView
+			        android:id="@+id/textInfoTelephone"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="@string/infoTelephone"
+			        android:autoLink="phone" />
+			    
+			    <TextView
+			        android:id="@+id/textInfoFax"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="@string/infoFax" />
+			    
+		    </LinearLayout>
+	    
+	    </TableRow>
+	
+	</TableLayout>
+	
+</ScrollView>

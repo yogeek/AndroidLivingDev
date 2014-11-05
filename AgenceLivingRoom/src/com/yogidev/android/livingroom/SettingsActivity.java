@@ -1,14 +1,17 @@
 package com.yogidev.android.livingroom;
 
+import android.annotation.TargetApi;
+import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-public class SettingsActivity extends ActionBarActivity {
+@TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
+public class SettingsActivity extends Activity {
 	
 	
 	public final static String NOTIFICATION_ON = "Oui";
@@ -23,17 +26,30 @@ public class SettingsActivity extends ActionBarActivity {
 	    setContentView(R.layout.settings);
 	    
 	    // Get the Action Bar 
-	    ActionBar actionBar = getSupportActionBar();
+	    ActionBar actionBar = getActionBar();
 	    // Enable the app icon as an Up button
 	    actionBar.setDisplayHomeAsUpEnabled(true);
 	    // Set title
-	    actionBar.setTitle("Paramètres");
+	    actionBar.setTitle(R.string.action_settings);
 	    // Set logo
-	    actionBar.setLogo(R.drawable.rouages);
+	    // actionBar.setLogo(R.drawable.rouages);
+	    
+	    // to display the icon and not the logo
+//	    actionBar.setDisplayUseLogoEnabled(false);
+//	    actionBar.setDisplayHomeAsUpEnabled(true);
 	    
 	
 	}
 	
+	// This method hides the system bars and resize the content
+	private void hideSystemUI() {
+		getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+				| View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
+				| View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
+				// remove the following flag for version < API 19
+				| View.SYSTEM_UI_FLAG_IMMERSIVE); 
+	} 
+
 	public void onToggleClicked(View view) {
 	    // Is the toggle on?
 	    boolean on = ((ToggleButton) view).isChecked();
@@ -42,6 +58,7 @@ public class SettingsActivity extends ActionBarActivity {
 	        // Enable notification
 	    	this.notificationChoice = NOTIFICATION_ON;
 	    	Toast.makeText(this, "Notification activées !", Toast.LENGTH_SHORT).show();
+	    	hideSystemUI();
 	        
 	    } else {
 	        // Disable notification

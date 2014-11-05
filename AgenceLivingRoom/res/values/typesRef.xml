@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-    <string name="Tous">Tous les types</string>
+    <string name="TousLesTypes">Tous les types</string>
     <string name="T1">T1</string>
     <string name="T2">T2</string>
     <string name="T3">T3</string>

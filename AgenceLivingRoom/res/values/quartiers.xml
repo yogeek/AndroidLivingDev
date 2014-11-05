@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-    <string name="Tous">Tous les quartiers</string>
+    <string name="TouslesQuartiers">Tous les quartiers</string>
     <string name="Amidonniers">Amidonniers</string>
     <string name="Bonnefoy">Bonnefoy</string>
     <string name="Borderouge">Borderouge</string>

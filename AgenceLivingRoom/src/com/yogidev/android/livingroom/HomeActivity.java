@@ -1,11 +1,11 @@
 package com.yogidev.android.livingroom;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,13 +14,15 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-public class HomeActivity extends ActionBarActivity {
+public class HomeActivity extends Activity {
 	
 	private static final int SETTING_OPTIONS_CODE = 1;
-	private static final int FIND_REFERENCE_OPTIONS_CODE = 2;
+	private static final int ABOUT_OPTIONS_CODE = 2;
+	private static final int FIND_REFERENCE_OPTIONS_CODE = 3;
 	
 	// L'identifiant de la chaîne de caractères qui contient le résultat de l'intent
 	public final static String SETTINGS_BUTTONS = "com.yogidev.android.intent.settings.Boutons";
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +33,7 @@ public class HomeActivity extends ActionBarActivity {
 		getActionBar().setDisplayUseLogoEnabled(true);
 		
 		if (savedInstanceState == null) {
-			getSupportFragmentManager().beginTransaction()
-					.add(R.id.container, new PlaceholderFragment()).commit();
+			getFragmentManager().beginTransaction().add(R.id.container, new PlaceholderFragment()).commit();
 		}
 	}
 	
@@ -49,22 +50,36 @@ public class HomeActivity extends ActionBarActivity {
 		return true;
 	}
 
+	/**
+	 * Manage the action bar options
+	 * 
+	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		Intent intent = null;
+		switch (item.getItemId()) {
+			case R.id.action_settings:
 			
-			// Launch Settings Activity
-			Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
-			startActivityForResult(intent, SETTING_OPTIONS_CODE);
+				// Launch Settings Activity
+				intent = new Intent(HomeActivity.this, SettingsActivity.class);
+				startActivityForResult(intent, SETTING_OPTIONS_CODE);
+				return true;
+				
+			case R.id.action_about:
+				
+				// Launch About Activity
+				intent = new Intent(HomeActivity.this, InfosActivity.class);
+				startActivityForResult(intent, ABOUT_OPTIONS_CODE);
+				return true;
 			
-			return true;
+			default:
+				return super.onOptionsItemSelected(item);
 		}
-		return super.onOptionsItemSelected(item);
 	}
+	
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
