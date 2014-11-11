@@ -12,6 +12,9 @@
     <string name="buttonRechercherDesc">Image pour le bouton Rechercher</string>
     
     <string name="notificationsPush">Notifications push</string>
+    <string name="fullScreenMode">Mode plein écran</string>
+    
+    <string name="no_result">Aucun résultat !</string>
     
     <string name="boutonValider">Valider</string>
     <string name="boutonRechercher">Rechercher</string>

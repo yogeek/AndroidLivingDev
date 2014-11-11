@@ -27,6 +27,12 @@ public class HomeActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		// ---------------------------------- begin code for Droid Inpector (search for this line in the project to suppress all occurences)
+//		ViewServer.get(this).addWindow(this); 
+		// ---------------------------------- end code for Droid Inpector
+		
+		
 		setContentView(R.layout.activity_home);
 		
 		// Use of the "logo" defined in the Manifest instead of the default "icon" for the ActionBar
@@ -110,4 +116,20 @@ public class HomeActivity extends Activity {
 		}
 		
 	}
+	
+//    @Override
+//    public void onDestroy() {
+//        super.onDestroy();
+//		// ---------------------------------- begin code for Droid Inpector (search for this line in the project to suppress all occurences)
+//		ViewServer.get(this).addWindow(this); 
+//		// ---------------------------------- end code for Droid Inpector
+//    }
+// 
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//		// ---------------------------------- begin code for Droid Inpector (search for this line in the project to suppress all occurences)
+//		ViewServer.get(this).addWindow(this); 
+//		// ---------------------------------- end code for Droid Inpector
+//    }
 }

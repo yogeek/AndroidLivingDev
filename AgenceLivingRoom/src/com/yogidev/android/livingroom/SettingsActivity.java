@@ -57,13 +57,13 @@ public class SettingsActivity extends Activity {
 	    if (on) {
 	        // Enable notification
 	    	this.notificationChoice = NOTIFICATION_ON;
-	    	Toast.makeText(this, "Notification activées !", Toast.LENGTH_SHORT).show();
+	    	Toast.makeText(this, "Passage en mode plein écran", Toast.LENGTH_SHORT).show();
 	    	hideSystemUI();
 	        
 	    } else {
 	        // Disable notification
 	    	this.notificationChoice = NOTIFICATION_OFF;
-	    	Toast.makeText(this, "Notification désactivées !", Toast.LENGTH_SHORT).show();
+	    	Toast.makeText(this, "Mode plein écran désactivé !", Toast.LENGTH_SHORT).show();
 	    }
 	}
 	

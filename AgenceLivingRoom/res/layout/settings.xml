@@ -13,7 +13,7 @@
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/notificationsPush" />
+            android:text="@string/fullScreenMode" />
 
         <ToggleButton
             android:id="@+id/toggleButton1"
@@ -25,30 +25,4 @@
 
     </LinearLayout>
     
-    <LinearLayout
-	    android:orientation="horizontal"
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
-	    android:gravity="center_horizontal"
-	    >
-      
-		    <!-- Bouton VALIDER -->
-			<Button android:id="@+id/validerButton"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:text="@string/boutonValider"
-				android:onClick="onValiderClicked"
-				/>
-			<!-- Bouton ANNULER -->
-			<Button android:id="@+id/annulerButton"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:text="@string/boutonAnnuler"
-				android:onClick="onAnnulerClicked"
-				/>
-		
-		</LinearLayout>
-    
-    
-
 </LinearLayout>
