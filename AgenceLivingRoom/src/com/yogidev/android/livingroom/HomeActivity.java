@@ -20,6 +20,14 @@ public class HomeActivity extends Activity {
 	private static final int ABOUT_OPTIONS_CODE = 2;
 	private static final int FIND_REFERENCE_OPTIONS_CODE = 3;
 	
+	// to save the current theme of the activity
+	private int mThemeId = -1;
+	// to save current background
+	private static final int GARONNE_BACKGROUND = R.drawable.garonne;
+	private static final int CANAL_BACKGROUND = R.drawable.canal_midi;
+	private int mBackgroundId = GARONNE_BACKGROUND;
+	private static View fragmentView;
+	
 	// L'identifiant de la chaîne de caractères qui contient le résultat de l'intent
 	public final static String SETTINGS_BUTTONS = "com.yogidev.android.intent.settings.Boutons";
 	
@@ -27,6 +35,13 @@ public class HomeActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		if(savedInstanceState != null) {
+            if (savedInstanceState.getInt("theme", -1) != -1) {
+              mThemeId = savedInstanceState.getInt("theme");
+              this.setTheme(mThemeId);
+            }
+        }
 		
 		// ---------------------------------- begin code for Droid Inpector (search for this line in the project to suppress all occurences)
 //		ViewServer.get(this).addWindow(this); 
@@ -42,6 +57,12 @@ public class HomeActivity extends Activity {
 			getFragmentManager().beginTransaction().add(R.id.container, new PlaceholderFragment()).commit();
 		}
 	}
+	
+    @Override
+    public void onSaveInstanceState (Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("theme", mThemeId);
+    }
 	
 	public void onFindClicked(View view) {
 		// Launch ReferenceListActivity
@@ -74,6 +95,18 @@ public class HomeActivity extends Activity {
 				startActivityForResult(intent, SETTING_OPTIONS_CODE);
 				return true;
 				
+			case R.id.menu_toggleTheme:
+				if (mThemeId == R.style.AppTheme_Dark) {
+					mThemeId = R.style.AppTheme_Light;
+					mBackgroundId = CANAL_BACKGROUND;
+				} else {
+					mThemeId = R.style.AppTheme_Dark;
+					mBackgroundId = GARONNE_BACKGROUND;
+				}
+				changeBackground(mBackgroundId);
+				this.recreate();
+				return true;
+				
 			case R.id.action_about:
 				
 				// Launch About Activity
@@ -86,6 +119,10 @@ public class HomeActivity extends Activity {
 		}
 	}
 	
+	public void changeBackground(int backgroundId) {
+		fragmentView.setBackgroundResource(backgroundId);
+		Toast.makeText(this, "Background => " + backgroundId, Toast.LENGTH_SHORT).show();
+	}
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -112,6 +149,7 @@ public class HomeActivity extends Activity {
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
 			View rootView = inflater.inflate(R.layout.fragment_home, container,	false);
+			fragmentView = rootView;
 			return rootView;
 		}
 		

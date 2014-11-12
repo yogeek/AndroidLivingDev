@@ -4,6 +4,7 @@
     <string name="app_name">AgenceLivingRoom</string>
     
     <string name="action_settings">Paramètres</string>
+    <string name="day_night">Day/Night</string>
     <string name="action_about">A propos</string>
     <string name="action_infos">Infos</string>
     
@@ -13,6 +14,8 @@
     
     <string name="notificationsPush">Notifications push</string>
     <string name="fullScreenMode">Mode plein écran</string>
+    
+    <string name="titreReference">Titre de la référénce</string>
     
     <string name="no_result">Aucun résultat !</string>
     
@@ -50,5 +53,12 @@
 	<string name="infoSociete">Agence LivingRoom est une marque de la société USUFREE SARL au capital de 2 000 euros,
 	    Le siège social est à AUREVILLE (31320) – Le bois grand, immatriculée au Registre du Commerce et des Sociétés de TOULOUSE
 	    Identifiée sous le numéro SIREN 493 889 315, titulaire de la carte G0675 délivrée par la Préfecture de Haute Garonne</string>
+	    
+	<string name="descriptionReferenceTitre">Description</string>
+	<string name="detailsReferenceTitre">Détails</string>
+	<string name="carteReferenceTitre">Sur la carte</string>
+	<string name="dummy_section_text">Section %1d is just a dummy section.</string>
+	
+	<string name="collectionGallery">Galerie de photos</string>
 	
 </resources>

@@ -1,5 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/homeFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -152,120 +153,5 @@
 
     </TableLayout>
     
-    <!-- Footer -->
-    
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="54dp"
-        android:background="@android:color/background_light"
-        android:baselineAligned="false"
-        android:gravity="bottom"
-        android:orientation="horizontal"
-        android:weightSum="4" >
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:orientation="vertical" >
-
-            <ImageButton
-                android:id="@+id/btn_1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:background="@android:color/transparent"
-                android:scaleType="centerInside"
-                android:src="@drawable/maison" />
-
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center" 
-                android:background="@android:color/background_light"
-                android:text="@string/accueil" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:orientation="vertical" >
-
-            <ImageButton
-                android:id="@+id/btn_2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scaleType="centerInside"
-                android:adjustViewBounds="true"
-                android:background="@android:color/transparent"
-                android:src="@drawable/continent" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center" 
-                android:background="@android:color/background_light"
-                android:text="@string/siteWeb" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:orientation="vertical" >
-
-            <ImageButton
-                android:id="@+id/btn_3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scaleType="centerInside"
-                android:adjustViewBounds="true"
-                android:background="@android:color/transparent"
-                android:src="@drawable/info" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center" 
-                android:background="@android:color/background_light"
-                android:text="@string/infos" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:orientation="vertical" >
-
-            <ImageButton
-                android:id="@+id/btn_4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scaleType="centerInside"
-                android:adjustViewBounds="true"
-                android:background="@android:color/transparent"
-                android:src="@drawable/rouages" />
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center" 
-                android:background="@android:color/background_light"
-                android:text="@string/parametres" />
-        </LinearLayout>
-        
-    </LinearLayout>
 
 </LinearLayout>

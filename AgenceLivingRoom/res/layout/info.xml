@@ -16,13 +16,15 @@
             android:id="@+id/tableRow1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp" >
+            android:layout_marginBottom="10dp"
+            android:gravity="center" >
 	    
 	    <ImageView 
 	        android:id="@+id/imageInfoAdress"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:src="@drawable/mail_box" />
+	        android:src="@drawable/mail_box"
+	        android:gravity="center" />
 	    
 	    </TableRow>
 	    
@@ -30,14 +32,16 @@
             android:id="@+id/tableRow2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp" >
+            android:layout_marginBottom="50dp"
+            android:gravity="center" >
 	    
 	    <TextView
 	        android:id="@+id/textInfoAdress"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:text="@string/infoAdresse"
-	        android:linksClickable="true" />
+	        android:linksClickable="true"
+	        android:gravity="center" />
 	    
 	    </TableRow>
 	    
@@ -47,13 +51,15 @@
             android:id="@+id/tableRow7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp" >
+            android:layout_marginBottom="10dp"
+            android:gravity="center" >
 	    
 	    <ImageView 
 	        android:id="@+id/imageInfoSociete"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:src="@drawable/building_icon" />
+	        android:src="@drawable/building_icon"
+	        android:gravity="center" />
 	    
 	    </TableRow>
 	    
@@ -61,13 +67,15 @@
             android:id="@+id/tableRow8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp" >
+            android:layout_marginBottom="50dp"
+            android:gravity="center" >
 	    
 	    <TextView
 	        android:id="@+id/textInfoSociete"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:text="@string/infoSociete" />
+	        android:text="@string/infoSociete"
+	        android:gravity="center" />
 	    
 	    </TableRow>
 	    
@@ -77,13 +85,15 @@
             android:id="@+id/tableRow4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp" >
+            android:layout_marginBottom="10dp"
+            android:gravity="center" >
 	    
 	    <ImageView 
 	        android:id="@+id/imageInfoMail"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:src="@drawable/arobase" />
+	        android:src="@drawable/arobase"
+	        android:gravity="center" />
 	    
 	    </TableRow>
 	    
@@ -91,14 +101,16 @@
             android:id="@+id/tableRow5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp" >
+            android:layout_marginBottom="50dp"
+            android:gravity="center" >
 	    
 	    <TextView
 	        android:id="@+id/textInfoMail"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:text="@string/infoMail"
-	        android:autoLink="email" />
+	        android:autoLink="email"
+	        android:gravity="center" />
 	    
 	    </TableRow>
 
@@ -108,25 +120,29 @@
             android:id="@+id/tableRow10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp" >
+            android:layout_marginBottom="10dp"
+            android:gravity="center" >
 	    
 	    <ImageView 
 	        android:id="@+id/imageInfoTelephone"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:src="@drawable/telephone" />
+	        android:src="@drawable/telephone"
+	        android:gravity="center" />
 	    
 	    </TableRow>
 	    
 	    <TableRow
             android:id="@+id/tableRow11"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:gravity="center" >
 	    
 	        <LinearLayout 
 	            android:orientation="vertical"
         		android:layout_width="fill_parent"
-        		android:layout_height="wrap_content" >
+        		android:layout_height="wrap_content"
+        		android:gravity="center" >
 	    
 			    <TextView
 			        android:id="@+id/textInfoTelephone"

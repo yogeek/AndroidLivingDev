@@ -1,37 +1,45 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
-    <style name="AppBaseTheme" parent="@style/Theme.AppCompat.Light">
-        <!--
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        -->
-    </style>
-    
-        <!-- Setting theme -->
-    
-    <!-- general styles for the action bar -->
-    <style name="myTheme" parent="@style/Widget.AppCompat.ActionBar">
 
-        <!-- Support library compatibility -->
-        <item name="titleTextStyle">@style/TitleTextStyle</item>
-        <item name="background">@color/brown_livingroom_light</item>
+    
+    
+    <!-- For "changing theme" button in action bar action -->
+    
+    <style name="ActionBar" parent="@android:style/Widget.Holo.ActionBar" />
+
+    <style name="ActionBar.Light" parent="@style/ActionBar">
+        <item name="android:background">@color/actionbar_background_light</item>
+    </style>
+
+    <style name="ActionBar.Dark" parent="@style/ActionBar">
+        <item name="android:background">@color/actionbar_background_dark</item>
     </style>
     
-    <!-- action bar title text -->
-    <style name="TitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+    <style name="AppTheme.Light" parent="@android:style/Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/ActionBar.Light</item>
+        <item name="android:windowActionBarOverlay">false</item>
+        <item name="android:textColor">@color/brown_livingroom_dark</item>
+    </style>
+
+    <style name="AppTheme.Dark" parent="@android:style/Theme.Holo">
+        <item name="android:actionBarStyle">@style/ActionBar.Dark</item>
+        <item name="android:windowActionBarOverlay">false</item>
         <item name="android:textColor">@color/white</item>
-        <!-- item name="android:homeAsUpIndicator">@android:id/up</item-->
+    </style>    
+    
+    <style name="ActivityMain_Garonne" parent="@android:style/Theme.Holo.Light">
+	    <item name="android:background">@drawable/garonne</item>
     </style>
-
-    <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    
+    <style name="ActivityMain_CanalMidi" parent="@android:style/Theme.Holo.Light">
+	    <item name="android:background">@drawable/canal_midi</item>
     </style>
+    
+    
     
     <!-- SlashScreen theme -->
     <style name="Theme.Transparent" parent="android:Theme">
@@ -51,6 +59,5 @@
         <item name="android:windowEnterAnimation">@anim/appear</item>
         <item name="android:windowExitAnimation">@anim/disappear</item> 
     </style>
-    
 
 </resources>

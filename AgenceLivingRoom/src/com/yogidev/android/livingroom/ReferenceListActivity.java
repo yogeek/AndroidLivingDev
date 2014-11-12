@@ -6,6 +6,7 @@ import java.util.List;
 
 import android.app.ActionBar;
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ListAdapter;
 import android.widget.Toast;
@@ -17,6 +18,8 @@ public class ReferenceListActivity extends ListActivity implements SwipeListView
 	
 //	private ListView mListView;
 	private ReferenceListAdapter mAdapter;
+	
+	private static final int REFERENCE_DESCRIPTION_CODE = 4;
 	
 	/** Called when the activity is first created. */
 	@Override
@@ -52,7 +55,9 @@ public class ReferenceListActivity extends ListActivity implements SwipeListView
         final Bundle objetbunble  = getIntent().getExtras();
         
         // get content of the "recherche" object
-        String[] rechercheDetails = (String[]) objetbunble.get("recherche");
+        String[] rechercheDetails;
+        if (objetbunble != null)
+        	rechercheDetails = (String[]) objetbunble.get("recherche");
         
         // AlertDialog to display the content
 //		AlertDialog.Builder adbRechercheContent = new AlertDialog.Builder(this);
@@ -96,6 +101,10 @@ public class ReferenceListActivity extends ListActivity implements SwipeListView
 		// set the flag to make the "delete" button disappear
 		mAdapter.DELETE_POS = mAdapter.INVALID;
 		mAdapter.notifyDataSetChanged();
+		
+		// Launch the Description activity
+		Intent intent = new Intent(ReferenceListActivity.this, ReferenceDescriptionActivity.class);
+		startActivityForResult(intent, REFERENCE_DESCRIPTION_CODE);
 	}
 	
     @Override
