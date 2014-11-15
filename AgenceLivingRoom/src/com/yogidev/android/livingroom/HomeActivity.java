@@ -19,6 +19,7 @@ public class HomeActivity extends Activity {
 	private static final int SETTING_OPTIONS_CODE = 1;
 	private static final int ABOUT_OPTIONS_CODE = 2;
 	private static final int FIND_REFERENCE_OPTIONS_CODE = 3;
+	private static final int CONTACT_CARD_OPTIONS_CODE = 4;
 	
 	// to save the current theme of the activity
 	private int mThemeId = -1;
@@ -64,10 +65,26 @@ public class HomeActivity extends Activity {
         outState.putInt("theme", mThemeId);
     }
 	
+    /**
+     * Go to "FindReferenceActivity"
+     * 
+     * @param view
+     */
 	public void onFindClicked(View view) {
 		// Launch ReferenceListActivity
 		Intent intent = new Intent(HomeActivity.this, FindReferenceActivity.class);
 		startActivityForResult(intent, FIND_REFERENCE_OPTIONS_CODE);
+	}
+	
+	/**
+     * Go to "ContactCardFlipActivity"
+     * 
+     * @param view
+     */
+	public void onContactClicked(View view) {
+		// Launch ReferenceListActivity
+		Intent intent = new Intent(HomeActivity.this, ContactCardFlipActivity.class);
+		startActivityForResult(intent, CONTACT_CARD_OPTIONS_CODE);
 	}
 
 	@Override

@@ -100,6 +100,18 @@
                 android:value=".ReferenceListActivity" />
         </activity>
         
+        <activity 
+            android:name="ContactCardFlipActivity" 
+            android:parentActivityName=".HomeActivity" 
+            >
+            <!-- Parent activity meta-data to support API level 7+ -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomeActivity" />
+        </activity>
+        
+        
+        
     </application>
 
 </manifest>

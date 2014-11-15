@@ -137,7 +137,8 @@
 	                android:layout_width="match_parent"
 	                android:layout_height="wrap_content"
 	                android:background="@android:color/transparent"
-	                android:src="@drawable/enveloppe" />
+	                android:src="@drawable/enveloppe"
+	                android:onClick="onContactClicked" />
 
 	            <Button
 	                android:id="@+id/button4"
@@ -145,7 +146,8 @@
 	                android:layout_height="wrap_content"
 	                android:layout_margin="10dp"
 	                android:background="@android:color/background_light"
-	                android:text="@string/contact" />
+	                android:text="@string/contact"
+	                android:onClick="onContactClicked" />
 	        
 	        </LinearLayout>
 	    

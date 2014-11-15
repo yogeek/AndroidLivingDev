@@ -44,7 +44,11 @@
 	<string name="choixLoyer">Loyer CC</string>
 	<string name="promptLoyer">Choisir le loyer CC</string>
 	
-	<string name="contactMailMessage">Envoyez-nous votre message, nous vous répondrons par email.</string>
+	<string name="contactMailMessage">Envoyez-nous votre message en cliquant sur le lien ci-dessous.</string>
+	<string name="appeler">Appeler</string>
+	<string name="actionContactTelephone">Contacter par téléphone</string>
+    <string name="actionContactMail">Contacter par mail</string>
+    <string name="callNumber">tel:0638540923</string>
 	
 	<string name="infoAdresse">Bureaux de l\'agence: <a href="http://www.google.fr/maps/place/8+Rue+Ingres,+31000+Toulouse/">8 Rue Ingres, 31000 Toulouse</a></string>
 	<string name="infoMail">contact@agence-livingroom.com</string>
