@@ -9,9 +9,9 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 
 import com.yogidev.android.livingroom.data.bean.Recherche;
 
@@ -23,7 +23,7 @@ public class FindReferenceActivity extends Activity {
 	private Spinner spinnerQuartier;
 	private Spinner spinnerType;
 	private Spinner spinnerLoyer;
-	private ToggleButton toggleLocationVente;
+	private RadioButton radioButtonLouer;
 	private ImageButton buttonRechercher;
 	private TextView textQuartier;
 	
@@ -35,6 +35,9 @@ public class FindReferenceActivity extends Activity {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.find_reference);
 	    
+	    // Opacity of the background
+	    findViewById(R.id.scroll).getBackground().setAlpha(120);
+	    
 	    objetbunble = new Bundle();
 
 		// Spinner Ville
@@ -45,8 +48,10 @@ public class FindReferenceActivity extends Activity {
 	    spinnerQuartier.setVisibility(View.VISIBLE);
 	    // Spinner Type
 	    spinnerType = (Spinner) findViewById(R.id.SpinnerType);
-	    // Toggle location/vente
-	    toggleLocationVente = (ToggleButton) findViewById(R.id.ToggleLocationVente);
+	    
+	    // Radio location/vente
+	    radioButtonLouer = (RadioButton) findViewById(R.id.radioLouer);
+	    
 	    // Spinner Loyer
 	    spinnerLoyer = (Spinner) findViewById(R.id.SpinnerLoyer);
 	    
@@ -62,11 +67,11 @@ public class FindReferenceActivity extends Activity {
 	    				String currentVille = parent.getItemAtPosition(pos).toString();
 	    				if (currentVille.equals(getResources().getString(R.string.Toulouse))) {
 	    					textQuartier.setVisibility(View.VISIBLE);
-	    					spinnerQuartier.setVisibility(View.VISIBLE);
+	    					findViewById(R.id.LinearSpinnerQuartier).setVisibility(View.VISIBLE);
 	    				}
 	    				else {
 	    					textQuartier.setVisibility(View.GONE);
-	    					spinnerQuartier.setVisibility(View.GONE);
+	    					findViewById(R.id.LinearSpinnerQuartier).setVisibility(View.GONE);
 	    				}
 	    			}
 
@@ -75,6 +80,9 @@ public class FindReferenceActivity extends Activity {
 	    			}
 
 	    		});
+//	    ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.villes_array, R.layout.spinner_item);
+//	    adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+//	    spinnerVille.setAdapter(adapter);
 	    
 
 	    buttonRechercher.setOnClickListener(
@@ -86,7 +94,7 @@ public class FindReferenceActivity extends Activity {
 	    					String ville = (String)spinnerVille.getSelectedItem();
 	    					String quartier = (String)spinnerQuartier.getSelectedItem();
 	    					String type = (String)spinnerType.getSelectedItem();
-	    					boolean isLocation = toggleLocationVente.isChecked();
+	    					boolean isLocation = radioButtonLouer.isChecked();
 	    					String loyer = (String)spinnerLoyer.getSelectedItem();
 	    						    					
 	    					Recherche recherche = new Recherche(ville, quartier, type, isLocation, loyer);
@@ -112,26 +120,35 @@ public class FindReferenceActivity extends Activity {
 	    // Enable the app icon as an Up button
 	    actionBar.setDisplayHomeAsUpEnabled(true);
 	    // Set title
-	    actionBar.setTitle("Trouver un bien");
+	    actionBar.setTitle(getString(R.string.titreTrouverLogement));
 	    // Set logo
 	    //actionBar.setLogo(R.drawable.loupe);
 	    actionBar.setDisplayUseLogoEnabled(true);
 	    
 	}
 	
-
 	/**
-	 * Listener on the toggle button "A louer / A vendre"
+	 * Listener on the radio button "A louer / A vendre"
 	 * 
-	 * Behaviour : hide SpinnerLoyer if toggleLocationVente is off (i.e. Vente)
+	 * Behaviour : hide SpinnerLoyer if radioVendre is on
 	 */
-	public void onToggleLocationVenteClicked(View view) {
-		if (toggleLocationVente.isChecked()) {
-			spinnerLoyer.setVisibility(View.VISIBLE);
-		}
-		else {
-			spinnerLoyer.setVisibility(View.GONE);
-		}
+	public void onRadioButtonClicked(View view) {
+	    // Is the button now checked?
+	    boolean checked = ((RadioButton) view).isChecked();
+	    
+	    // Check which radio button was clicked
+	    switch(view.getId()) {
+	        case R.id.radioLouer:
+	            if (checked)
+	            	findViewById(R.id.LinearSpinnerLoyer).setVisibility(View.VISIBLE);
+	            	spinnerLoyer.setVisibility(View.VISIBLE);
+	            break;
+	        case R.id.radioVendre:
+	            if (checked)
+	            	findViewById(R.id.LinearSpinnerLoyer).setVisibility(View.GONE);
+	            	spinnerLoyer.setVisibility(View.GONE);
+	            break;
+	    }
 	}
 	
 

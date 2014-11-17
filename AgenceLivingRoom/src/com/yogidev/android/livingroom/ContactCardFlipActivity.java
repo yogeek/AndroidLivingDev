@@ -72,8 +72,10 @@ implements FragmentManager.OnBackStackChangedListener {
 		// Monitor back stack changes to ensure the action bar shows the appropriate
 		// button (either "photo" or "info").
 		getFragmentManager().addOnBackStackChangedListener(this);
+		
 	}
-
+	
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);

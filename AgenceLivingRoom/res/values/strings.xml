@@ -11,6 +11,7 @@
     <string name="logo_desc">Logo de l\'application</string>
     <string name="description">Application mobile de l\'agence immobilière Living Room</string>
     <string name="buttonRechercherDesc">Image pour le bouton Rechercher</string>
+    <string name="titreTrouverLogement">Trouvez votre logement</string>
     
     <string name="notificationsPush">Notifications push</string>
     <string name="fullScreenMode">Mode plein écran</string>
@@ -41,8 +42,8 @@
 	<string name="promptType">Choisir le type</string>
 	<string name="choixLouer">A louer</string>
 	<string name="choixVendre">A vendre</string>
-	<string name="choixLoyer">Loyer CC</string>
-	<string name="promptLoyer">Choisir le loyer CC</string>
+	<string name="choixLoyer">Prix</string>
+	<string name="promptLoyer">Choisir le loyer</string>
 	
 	<string name="contactMailMessage">Envoyez-nous votre message en cliquant sur le lien ci-dessous.</string>
 	<string name="appeler">Appeler</string>

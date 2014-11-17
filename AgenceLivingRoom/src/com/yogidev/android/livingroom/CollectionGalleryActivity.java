@@ -16,8 +16,24 @@
 
 package com.yogidev.android.livingroom;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import android.app.ActionBar;
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -29,11 +45,22 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ImageView;
+import android.widget.Toast;
+
 
 public class CollectionGalleryActivity extends FragmentActivity {
-
+	
+	public static final List<String> photosList =   new ArrayList<String>(Arrays.asList(
+			"http://agence-livingroom.com/references/1100/photo_1037.jpg",
+			"http://agence-livingroom.com/references/1100/photo_1038.jpg",
+			"http://agence-livingroom.com/references/1100/photo_1040.jpg",
+			"http://agence-livingroom.com/references/1100/photo_1039.jpg",
+			"http://agence-livingroom.com/references/1100/photo_1041.jpg"
+			));
+	
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide fragments representing
      * each object in a collection. We use a {@link android.support.v4.app.FragmentStatePagerAdapter}
@@ -111,7 +138,7 @@ public class CollectionGalleryActivity extends FragmentActivity {
         public Fragment getItem(int i) {
             Fragment fragment = new DemoObjectFragment();
             Bundle args = new Bundle();
-            args.putInt(DemoObjectFragment.PHOTO_OBJECT, i + 1); // Our object is just an integer :-P
+            args.putString(DemoObjectFragment.PHOTO_OBJECT, photosList.get(i)); // Our object is the URL of the photo
             fragment.setArguments(args);
             return fragment;
         }
@@ -119,7 +146,7 @@ public class CollectionGalleryActivity extends FragmentActivity {
         @Override
         public int getCount() {
             // For this contrived example, we have a 10-object collection.
-            return 10;
+            return photosList.size();
         }
 
         @Override
@@ -134,15 +161,101 @@ public class CollectionGalleryActivity extends FragmentActivity {
     public static class DemoObjectFragment extends Fragment {
 
         public static final String PHOTO_OBJECT = "photo";
+        Bitmap bitmap;
+    	ProgressDialog pDialog;
+    	ImageView imgView;
+    	String imgUrl = "";
+    	Context context;
+    	Drawable defaultBackground;
+    	
+    	public void onAttach(Activity activity) {
+    	    // TODO Auto-generated method stub
+    	    super.onAttach(activity);
+    	    context = activity;
+    	}
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_collection_photo, container, false);
             Bundle args = getArguments();
-            ((TextView) rootView.findViewById(android.R.id.text1)).setText(
-                    Integer.toString(args.getInt(PHOTO_OBJECT)));
+            imgView = (ImageView)rootView.findViewById(android.R.id.text1);
+            imgUrl = args.getString(PHOTO_OBJECT);
+            new DownloadImageTask(imgView).execute(imgUrl);
+            
+            // add button listener
+            imgView.setOnClickListener(new OnClickListener() {
+			
+				@Override
+				public void onClick(View view) {
+			
+					//view.getRootView().setBackground(new BitmapDrawable(getBitmapFromURL(imgUrl)));
+					defaultBackground = view.getRootView().getBackground();
+					new LoadImage().execute(imgUrl);
+				}
+			
+			});
+            
             return rootView;
         }
+        
+        public static Bitmap getBitmapFromURL(String src) {
+            try {
+                URL url = new URL(src);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setDoInput(true);
+                connection.connect();
+                InputStream input = connection.getInputStream();
+                Bitmap myBitmap = BitmapFactory.decodeStream(input);
+                return myBitmap;
+            } catch (IOException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+        
+        private class LoadImage extends AsyncTask<String, String, Bitmap> {
+        	@Override
+        	protected void onPreExecute() {
+        		super.onPreExecute();
+        		pDialog = new ProgressDialog(context);
+        		pDialog.setMessage("Loading Image ....");
+        		pDialog.show();
+        	}
+        	protected Bitmap doInBackground(String... args) {
+        		try {
+        			bitmap = BitmapFactory.decodeStream((InputStream)new URL(args[0]).getContent());
+        		} catch (Exception e) {
+        			e.printStackTrace();
+        		}
+        		return bitmap;
+        	}
+        	protected void onPostExecute(Bitmap image) {
+        		if(image != null){
+        			//imgView.setImageBitmap(image);
+        			System.out.println("root View = " + imgView.getRootView());
+        			imgView.getRootView().setBackground(new BitmapDrawable(image));
+        			imgView.setVisibility(View.GONE);
+        			pDialog.dismiss();
+        			
+        			imgView.getRootView().setOnClickListener(new OnClickListener() {
+        				
+        				@Override
+        				public void onClick(View view) {
+        			
+        					view.getRootView().setBackground(defaultBackground);
+        					imgView.setVisibility(View.VISIBLE);
+        				}
+        			
+        			});
+        			
+        		}else{
+        			pDialog.dismiss();
+        			Toast.makeText(context, "Image Does Not exist or Network Error", Toast.LENGTH_SHORT).show();
+        		}
+        	}
+        }
     }
+    
+    
 }

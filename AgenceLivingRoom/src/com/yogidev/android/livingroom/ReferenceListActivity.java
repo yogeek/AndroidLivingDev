@@ -56,20 +56,27 @@ public class ReferenceListActivity extends ListActivity implements SwipeListView
         
         // get content of the "recherche" object
         String[] rechercheDetails;
-        if (objetbunble != null)
-        	rechercheDetails = (String[]) objetbunble.get("recherche");
-        
-        // AlertDialog to display the content
-//		AlertDialog.Builder adbRechercheContent = new AlertDialog.Builder(this);
-//		adbRechercheContent.setTitle("Détails de la recherche");
-//		adbRechercheContent.setPositiveButton("Ok", null);
-//		String message = "Ville : "    + rechercheDetails[0] + "/n";
-//		message 	  += "Quartier : " + rechercheDetails[1] + "/n";
-//		message 	  += "Type : "     + rechercheDetails[2] + "/n";
-//		message 	  += "Location : " + rechercheDetails[3] + "/n";
-//		message 	  += "Loyer : " + rechercheDetails[4] + "/n";
-//		adbRechercheContent.setMessage(message);
-//		adbRechercheContent.show();
+//        if (objetbunble != null) {
+//        	rechercheDetails = (String[]) objetbunble.get("recherche");
+//        
+//	        // AlertDialog to display the content
+//			AlertDialog.Builder adbRechercheContent = new AlertDialog.Builder(this);
+//			adbRechercheContent.setTitle("Détails de la recherche");
+//			adbRechercheContent.setPositiveButton("Ok", null);
+//			String message = "Ville : "    + rechercheDetails[0] + "/n";
+//			message 	  += "Quartier : " + rechercheDetails[1] + "/n";
+//			message 	  += "Type : "     + rechercheDetails[2] + "/n";
+//			message 	  += "Location : " + rechercheDetails[3] + "/n";
+//			message 	  += "Loyer : " + rechercheDetails[4] + "/n";
+//			adbRechercheContent.setMessage(message);
+//			adbRechercheContent.show();
+//        }
+//        else {
+//        	AlertDialog.Builder adbRechercheContent = new AlertDialog.Builder(this);
+//			adbRechercheContent.setTitle("Détails de la recherche");
+//			adbRechercheContent.setPositiveButton("Ok", null);
+//			adbRechercheContent.setMessage("Recherche vide !!!");
+//        }
 	    
 	    // Get the Action Bar 
 	    ActionBar actionBar = getActionBar();

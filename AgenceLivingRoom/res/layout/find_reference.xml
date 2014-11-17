@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroll" 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/garonne"
     >
- 
+
+<LinearLayout 
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="50dp"
+    android:paddingRight="50dp"
+    android:scrollbars="vertical"
+    >
  	
 	<!-- Choix de la ville -->
    	
@@ -12,20 +21,25 @@
    	android:layout_width="fill_parent"
    	android:layout_height="wrap_content"
    	android:text="@string/choixVille"
-   	android:layout_marginTop="30dp"
+   	android:layout_marginTop="10dp"
+   	android:textSize="20sp"
    	/>
 
    	 <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        >
+        android:layout_marginTop="5dp"
+        android:background="@drawable/custom_bg_1">
+        
 	     <Spinner android:id="@+id/SpinnerVille"
     		android:layout_width="fill_parent"
     		android:layout_height="wrap_content"
     		android:prompt="@string/promptVille"
     		android:entries="@array/villes_array"
+    		
     	 />
+	     <!-- android:background="@drawable/custom_bg_2"-->
 	</LinearLayout>
 	
    	<!-- Choix du quartier -->
@@ -34,13 +48,16 @@
    	android:layout_width="fill_parent"
    	android:layout_height="wrap_content"
    	android:text="@string/choixQuartier"
-   	android:layout_marginTop="30dp"
+   	android:layout_marginTop="20dp"
+   	android:textSize="20sp"
    	/>
 
-   	 <LinearLayout
+   	 <LinearLayout android:id="@+id/LinearSpinnerQuartier"
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/custom_bg_1"
         >
 	     <Spinner android:id="@+id/SpinnerQuartier"
     		android:layout_width="fill_parent"
@@ -56,13 +73,16 @@
    	android:layout_width="fill_parent"
    	android:layout_height="wrap_content"
    	android:text="@string/choixType"
-   	android:layout_marginTop="30dp"
+   	android:layout_marginTop="20dp"
+   	android:textSize="20sp"
    	/>
 
    	 <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/custom_bg_1"
         >
 	     <Spinner android:id="@+id/SpinnerType"
     		android:layout_width="fill_parent"
@@ -75,52 +95,72 @@
    	<!-- Choix du loyer -->
    	
    	 <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         >
 	     
-	     <!-- A louer ou A vendre ? -->
-	     <ToggleButton android:id="@+id/ToggleLocationVente"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:textOn="@string/choixLouer"
-		    android:textOff="@string/choixVendre"
-		    android:checked="true"
-		    android:layout_gravity="center_vertical"
-		    android:onClick="onToggleLocationVenteClicked"
-		 />
+		 <RadioGroup
+	        android:id="@+id/radioLouerVendre"
+	        android:layout_width="match_parent"
+	        android:layout_height="0dp"
+	        android:orientation="horizontal"
+	        android:gravity="center"
+	        android:layout_weight="1" >
+ 
+	        <RadioButton
+	            android:id="@+id/radioLouer"
+	            android:layout_width="wrap_content"
+	            android:layout_height="match_parent"
+	            android:layout_weight="1"
+	            android:text="@string/choixLouer" 
+	            android:textSize="20sp"
+	            android:checked="true"
+	            android:onClick="onRadioButtonClicked" />
+	 
+	        <RadioButton
+	            android:id="@+id/radioVendre"
+	            android:layout_width="wrap_content"
+	            android:layout_height="match_parent"
+	            android:layout_gravity="end"
+	            android:textSize="20sp"
+	            android:text="@string/choixVendre"
+	            android:onClick="onRadioButtonClicked" />
+		 
+		 </RadioGroup>
    	     
-	     <Spinner android:id="@+id/SpinnerLoyer"
-    		android:layout_width="fill_parent"
-    		android:layout_height="wrap_content"
-    		android:prompt="@string/promptLoyer"
-    		android:entries="@array/loyers_array"
-    	 />
+		 <LinearLayout android:id="@+id/LinearSpinnerLoyer"
+	        android:orientation="horizontal"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="5dp"
+	        android:background="@drawable/custom_bg_1"
+	        >
+	        
+			<!-- style="@style/MySpinnerStyle" -->
+			<Spinner android:id="@+id/SpinnerLoyer"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:prompt="@string/promptLoyer"
+				android:entries="@array/loyers_array"
+	    	 	/>
+		     
+	     </LinearLayout>
+	     
 	</LinearLayout>
 	
-	
-	<!-- Bouton RECHERCHER -->
-	<!-- <Button android:id="@+id/ButtonRechercher"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginTop="100dp"
-		android:layout_gravity="center"
-		android:background="@drawable/btn_rechercher"
-		android:contentDescription="@string/buttonRechercherDesc"
-	/>
- -->	
 	<!-- ImageBouton RECHERCHER -->
 	<ImageButton android:id="@+id/ButtonRechercher"
-		android:layout_width="200dp"
-		android:layout_height="30dp"
-		android:layout_marginTop="100dp"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+		android:layout_marginTop="30dp"
 		android:layout_gravity="center"
-		android:scaleType="centerCrop"
-		android:background="@android:color/transparent"
-		android:src="@drawable/btn_rechercher"
+		android:scaleType="centerInside"
 		android:contentDescription="@string/buttonRechercherDesc"
+		android:background="@android:color/transparent"
+		android:src="@drawable/bouton_rechercher_medium"
 	/>
 
 </LinearLayout>
+</ScrollView>
