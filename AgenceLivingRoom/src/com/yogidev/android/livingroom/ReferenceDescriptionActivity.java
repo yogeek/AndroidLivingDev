@@ -229,7 +229,8 @@ public class ReferenceDescriptionActivity extends FragmentActivity implements Ac
 			
 			// Fill the main image 
 			ImageButton collectionButton = (ImageButton) rootView.findViewById(R.id.demo_collection_button);
-			new DownloadImageTask(collectionButton,getResources().getDrawable(R.drawable.logo)).execute(ref.getVignette());
+//			new DownloadImageTask(collectionButton,getResources().getDrawable(R.drawable.logo)).execute(ref.FirstPhoto());
+			new DownloadImageTask(collectionButton,getResources().getDrawable(R.drawable.logo)).execute(CollectionGalleryActivity.photosList.get(0));
 			
 			// Fill the Description
 			TextView descView = (TextView) rootView.findViewById(R.id.textDescRef);
