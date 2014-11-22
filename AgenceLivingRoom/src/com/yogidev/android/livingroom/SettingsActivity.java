@@ -23,7 +23,12 @@ public class SettingsActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    
-	    setContentView(R.layout.settings);
+	    // Display the fragment as the main content.
+        getFragmentManager().beginTransaction()
+                .replace(android.R.id.content, new SettingsFragment())
+                .commit();
+	    
+//	    setContentView(R.layout.settings);
 	    
 	    // Get the Action Bar 
 	    ActionBar actionBar = getActionBar();
@@ -40,6 +45,7 @@ public class SettingsActivity extends Activity {
 	    
 	
 	}
+	
 	
 	// This method hides the system bars and resize the content
 	private void hideSystemUI() {

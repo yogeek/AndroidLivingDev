@@ -14,7 +14,10 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.yogidev.android.livingroom.data.bean.Reference;
 
 public class ReferenceDescriptionActivity extends FragmentActivity implements ActionBar.TabListener {
 
@@ -25,20 +28,44 @@ public class ReferenceDescriptionActivity extends FragmentActivity implements Ac
 	 * intensive, it may be best to switch to a {@link android.support.v4.app.FragmentStatePagerAdapter}.
 	 */
 	AppSectionsPagerAdapter mAppSectionsPagerAdapter;
-
+	
 	/**
 	 * The {@link ViewPager} that will display the three primary sections of the app, one at a
 	 * time.
 	 */
 	ViewPager mViewPager;
+	
+	// The bundle to pass and receive data to and from other activities
+	Bundle objetbunble;
+	
+	Reference currentReference;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+	    // Restore pref theme
+	    setTheme(PreferencesManager.getInstance().getThemePref());
+		
+	    // Get the Bundle sent by the previous activity
+	    objetbunble  = getIntent().getExtras();
+		
+	    // Create the bundle if null
+	    if (objetbunble == null) {
+	    	objetbunble = new Bundle();
+	    }
+	    
+	    // Get the currentReference in bundle
+	    currentReference = getIntent().getParcelableExtra("currentReference");
+
+	    // Inflate the view from XML
 		setContentView(R.layout.reference_view_pager);
+		
+		// set transparency 
+		getWindow().getDecorView().getRootView().setAlpha(PreferencesManager.TRANPARENCY);
 
 		// Create the adapter that will return a fragment for each of the three primary sections
 		// of the app.
-		mAppSectionsPagerAdapter = new AppSectionsPagerAdapter(getSupportFragmentManager(), this);
+		mAppSectionsPagerAdapter = new AppSectionsPagerAdapter(getSupportFragmentManager(), this, currentReference);
 
 		// Set up the action bar.
 		final ActionBar actionBar = getActionBar();
@@ -76,7 +103,7 @@ public class ReferenceDescriptionActivity extends FragmentActivity implements Ac
 					.setTabListener(this));
 		}
 	}
-
+	
 	@Override
 	public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
 	}
@@ -102,7 +129,8 @@ public class ReferenceDescriptionActivity extends FragmentActivity implements Ac
         	mViewPager.setCurrentItem(mViewPager.getCurrentItem() - 1);
         }
     }
-
+   
+    
 	/**
 	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to one of the primary
 	 * sections of the app.
@@ -110,10 +138,12 @@ public class ReferenceDescriptionActivity extends FragmentActivity implements Ac
 	public static class AppSectionsPagerAdapter extends FragmentPagerAdapter {
 		Context context;
 		final int PAGE_COUNT = 3;
+		Reference mRef;
 
-		public AppSectionsPagerAdapter(FragmentManager fm, Context nContext) {
+		public AppSectionsPagerAdapter(FragmentManager fm, Context nContext, Reference ref) {
 			super(fm);
 			context = nContext;
+			mRef = ref;
 		}
 
 		@Override
@@ -122,7 +152,11 @@ public class ReferenceDescriptionActivity extends FragmentActivity implements Ac
 			switch (i) {
 			case 0:
 				// The first section of the app : "Description" and path to the pictures collection gallery
-				fragment = new LaunchpadSectionFragment();
+				fragment = new DescriptionSectionFragment();
+				Bundle argsDesc = new Bundle();
+				// Good practice for passing parceable object to fragment
+				argsDesc.putParcelable(DescriptionSectionFragment.ARG_CURRENT_REF, mRef);
+				fragment.setArguments(argsDesc);
 				break;
 			case 1:
 				// The second section of the app : "Details"
@@ -172,14 +206,34 @@ public class ReferenceDescriptionActivity extends FragmentActivity implements Ac
 	}
 
 	/**
-	 * A fragment that launches other parts of the demo application.
+	 * A fragment that shows the description of the reference :
+	 * - the title
+	 * - the first picture which displays the gallery when clicked
+	 * - general information
 	 */
-	public static class LaunchpadSectionFragment extends Fragment {
-
+	public static class DescriptionSectionFragment extends Fragment {
+		
+		public static final String ARG_CURRENT_REF= "mCurrentRef";
+		
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
 			View rootView = inflater.inflate(R.layout.fragment_description_reference, container, false);
+			
+			Bundle args = getArguments();
+			Reference ref = args.getParcelable(ARG_CURRENT_REF);
+			
+			// Fill the Title
+			TextView titreView = (TextView) rootView.findViewById(R.id.textTitreRef);
+			titreView.setText(ref.getVille() + " - " + ref.getQuartier());
+			
+			// Fill the main image 
+			ImageButton collectionButton = (ImageButton) rootView.findViewById(R.id.demo_collection_button);
+			new DownloadImageTask(collectionButton,getResources().getDrawable(R.drawable.logo)).execute(ref.getVignette());
+			
+			// Fill the Description
+			TextView descView = (TextView) rootView.findViewById(R.id.textDescRef);
+			descView.setText(ref.getDescriptif());
 
 			// Demonstration of a collection-browsing activity.
 			rootView.findViewById(R.id.demo_collection_button).setOnClickListener(new View.OnClickListener() {

@@ -22,24 +22,22 @@
     <style name="AppTheme.Light" parent="@android:style/Theme.Holo.Light">
         <item name="android:actionBarStyle">@style/ActionBar.Light</item>
         <item name="android:windowActionBarOverlay">false</item>
-        <item name="android:textColor">@color/brown_livingroom_dark</item>
         <item name="android:spinnerStyle">@style/Widget.Spinner</item>
+        <item name="android:windowBackground">@drawable/garonne</item>
     </style>
 
     <style name="AppTheme.Dark" parent="@android:style/Theme.Holo">
         <item name="android:actionBarStyle">@style/ActionBar.Dark</item>
         <item name="android:windowActionBarOverlay">false</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:spinnerStyle">@style/Widget.Spinner</item>
+        <item name="android:windowBackground">@drawable/canal_midi</item>
     </style>    
     
-    <style name="ActivityMain_Garonne" parent="@android:style/Theme.Holo.Light">
-	    <item name="android:background">@drawable/garonne</item>
-    </style>
-    
-    <style name="ActivityMain_CanalMidi" parent="@android:style/Theme.Holo.Light">
-	    <item name="android:background">@drawable/canal_midi</item>
-    </style>
-    
+	<!-- style name="Transparent">
+        <item name="android:windowIsTranslucent">true</item>
+		<item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>
+		<item name ="android:windowBackground">@android:color/transparent</item>
+    </style-->
     
     
     <!-- SlashScreen theme -->
@@ -61,23 +59,11 @@
         <item name="android:windowExitAnimation">@anim/disappear</item> 
     </style>
     
+    
     <!-- Spinner theme -->
-	<!-- style name="MySpinnerTheme" parent="@android:style/Theme.Holo.Light">
-	    <item name="android:dropDownListViewStyle">@style/MySpinnerStyle</item>
-	</style-->
-	
 	<style name="Widget.Spinner" parent="android:Widget">
         <item name="android:background">@drawable/myspinner_selector</item>
         <item name="android:clickable">true</item>
     </style>
     
-    <!-- style name="MySpinnerStyle" parent="android:style/Widget.Spinner">
-	    <item name="android:divider">@android:color/holo_red_light</item>
-	    <item name="android:dividerHeight">20dp</item>
-	    <item name="android:popupBackground">@android:color/holo_red_light</item>
-	</style-->
-	<!-- item name="android:background">@color/brown_livingroom_light</item-->
-	
-	
-
 </resources>

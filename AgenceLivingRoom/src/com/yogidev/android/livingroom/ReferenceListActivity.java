@@ -21,16 +21,34 @@ public class ReferenceListActivity extends ListActivity implements SwipeListView
 	
 	private static final int REFERENCE_DESCRIPTION_CODE = 4;
 	
+	// The bundle to pass and receive data to and from other activities
+	Bundle objetbunble;
+	
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    
+	    // Restore pref theme
+	    setTheme(PreferencesManager.getInstance().getThemePref());
+	    
+	    // Get the Bundle sent by the previous activity
+	    objetbunble  = getIntent().getExtras();
+		
+	    // Create the bundle if null
+	    if (objetbunble == null) {
+	    	objetbunble = new Bundle();
+	    }
+	    
 		// ---------------------------------- begin code for Droid Inpector (search for this line in the project to suppress all occurences)
-//		ViewServer.get(this).addWindow(this); 
+	    //		ViewServer.get(this).addWindow(this); 
 		// ---------------------------------- end code for Droid Inpector
 	    
+	    // Inflate the view from XML
 	    setContentView(R.layout.reference_list_view);
+	    
+		// set transparency 
+		getWindow().getDecorView().getRootView().setAlpha(PreferencesManager.TRANPARENCY);
 	    
 	    // List View (accessible by getListView() since extends ListActivity)
 	    // or : mListView = (ListView) findViewById(android.R.id.list);
@@ -51,11 +69,8 @@ public class ReferenceListActivity extends ListActivity implements SwipeListView
 //	    mListView.setAdapter(mAdapter);
 	    setListAdapter(mAdapter);
 	    
-	    // Retrieve Bundle object
-        final Bundle objetbunble  = getIntent().getExtras();
-        
         // get content of the "recherche" object
-        String[] rechercheDetails;
+//        String[] rechercheDetails;
 //        if (objetbunble != null) {
 //        	rechercheDetails = (String[]) objetbunble.get("recherche");
 //        
@@ -91,6 +106,7 @@ public class ReferenceListActivity extends ListActivity implements SwipeListView
 	
 	}
 	
+	
 	@Override
 	public void onSwipeItem(boolean isRight, int position) {
 		// Call the onSwipeItem of the adapter
@@ -104,13 +120,15 @@ public class ReferenceListActivity extends ListActivity implements SwipeListView
 		System.out.println("EVENT 'onItemClickListener' on " + position);
 		
 		final Reference item = (Reference) adapter.getItem(position);	
-		Toast.makeText(this, "Item " + item.getTitreRef() + " clicked !", Toast.LENGTH_SHORT).show();
+		Toast.makeText(this, "Affichage de la référence '" + item.getTitreRef() + "' !", Toast.LENGTH_SHORT).show();
 		// set the flag to make the "delete" button disappear
 		mAdapter.DELETE_POS = mAdapter.INVALID;
 		mAdapter.notifyDataSetChanged();
 		
 		// Launch the Description activity
 		Intent intent = new Intent(ReferenceListActivity.this, ReferenceDescriptionActivity.class);
+		// Store the parceable Reference
+		intent.putExtra("currentReference", item);
 		startActivityForResult(intent, REFERENCE_DESCRIPTION_CODE);
 	}
 	
@@ -118,7 +136,7 @@ public class ReferenceListActivity extends ListActivity implements SwipeListView
     public void onDestroy() {
         super.onDestroy();
 		// ---------------------------------- begin code for Droid Inpector (search for this line in the project to suppress all occurences)
-//        ViewServer.get(this).removeWindow(this); 
+        //        ViewServer.get(this).removeWindow(this); 
 		// ---------------------------------- end code for Droid Inpector
     }
  
@@ -126,7 +144,7 @@ public class ReferenceListActivity extends ListActivity implements SwipeListView
     public void onResume() {
         super.onResume();
 		// ---------------------------------- begin code for Droid Inpector (search for this line in the project to suppress all occurences)
-//        ViewServer.get(this).setFocusedWindow(this);
+        //        ViewServer.get(this).setFocusedWindow(this);
 		// ---------------------------------- end code for Droid Inpector
     }
 	

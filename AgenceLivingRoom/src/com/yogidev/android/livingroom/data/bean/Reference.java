@@ -1,9 +1,11 @@
 package com.yogidev.android.livingroom.data.bean;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.yogidev.android.livingroom.data.util.Coordinate;
 
@@ -13,7 +15,7 @@ import com.yogidev.android.livingroom.data.util.Coordinate;
  * @author YoGi
  *
  */
-public class Reference {
+public class Reference implements Parcelable {
 	
 	// Ref
 	private long id = 0;
@@ -85,7 +87,7 @@ public class Reference {
 	private ArrayList<String> photos = null;
 	
 	// Video youtube
-	private URL videoYoutube = null;
+	private String videoYoutube = null;
 	
 	// Disponible ?
 	private boolean disponible = true;
@@ -126,7 +128,7 @@ public class Reference {
 		this.photos.add(photo);
 	}
 	
-	public void addPhotoList(ArrayList photoList) {
+	public void addPhotoList(ArrayList<String> photoList) {
 		this.photos.addAll(photoList);
 	}
 	
@@ -141,7 +143,7 @@ public class Reference {
 			int loyerOuPrix, int chargesOuCopro, int depotOuTaxe,
 			double fraisAgence, Coordinate latLon, String descriptif,
 			double surface, int nbLotCopro, String dpe, String ges,
-			List<String> listeEquipements, String vignette, URL videoYoutube,
+			List<String> listeEquipements, String vignette, String videoYoutube,
 			boolean disponible, boolean nouveaute, boolean visible,
 			Date libreDate) {
 		super();
@@ -172,6 +174,202 @@ public class Reference {
 		this.visible = visible;
 		this.libreDate = libreDate;
 	}
+	
+	
+	
+	//------------------------------------ parcel part BEGIN ------------------------------------
+//	public Reference(Parcel in){
+//
+//		//		String[] data= new String[28];
+//		//		in.readStringArray(data);
+//
+//		this.id= in.readLong();
+//		this.titreRef= in.readString();
+//		this.titreAdmin = in.readString();
+//		this.infoInterne = in.readString();
+//		this.locVente = in.readString();
+//		this.appartementMaison = in.readString();
+//		this.ville = in.readString();
+//		this.quartier = in.readString();
+//		this.loyerOuPrix = in.readInt();
+//		this.chargesOuCopro = in.readInt();
+//		this.depotOuTaxe = in.readInt();
+//		this.fraisAgence = in.readDouble();
+//		//		this.latLon = data[12];
+//		this.descriptif = in.readString();
+//		this.surface = in.readDouble();
+//		this.nbLotCopro = in.readInt();
+//		this.dpe = in.readString();
+//		this.ges = in.readString();
+//		this.listeEquipements = (ArrayList<String>) in.readSerializable();
+//		this.vignette = in.readString();
+//		this.videoYoutube = in.readString();
+//		//		this.disponible = in.readBooleanArray();
+//		//		this.nouveaute = Boolean.parseBoolean(data[22]);
+//		//		this.visible = Boolean.parseBoolean(data[23]);
+//		//		this.libreDate = in.read
+//	}
+//
+//	@Override
+//	public int describeContents() {
+//		// TODO Auto-generated method stub
+//		return 0;
+//	}
+//
+//	@Override
+//	public void writeToParcel(Parcel dest, int flags) {
+//		// TODO Auto-generated method stub
+//
+//		dest.writeLong(this.id);
+//		dest.writeString(this.titreRef);
+//		dest.writeString(this.titreAdmin);
+//		dest.writeString(this.infoInterne);
+//		dest.writeString(this.locVente);
+//		dest.writeString(this.appartementMaison);
+//		dest.writeString(this.ville);
+//		dest.writeString(this.quartier);
+//		dest.writeInt(this.loyerOuPrix);
+//		dest.writeInt(this.chargesOuCopro);
+//		dest.writeDouble(this.fraisAgence);
+//		//	this.latLon = data[12];
+//		dest.writeString(this.descriptif);
+//		dest.writeDouble(this.surface);
+//		dest.writeInt(this.nbLotCopro);
+//		dest.writeString(this.dpe);
+//		dest.writeString(this.ges);
+//		dest.writeSerializable((Serializable) this.listeEquipements);
+//		dest.writeString(this.vignette);
+//		//	this.videoYoutube = data[20];
+//		//	this.disponible = in.readBooleanArray();
+//		//	this.nouveaute = Boolean.parseBoolean(data[22]);
+//		//	this.visible = Boolean.parseBoolean(data[23]);
+//		//	this.libreDate = in.read
+//
+//
+//	}
+//
+//	public static final Parcelable.Creator<Reference> CREATOR= new Parcelable.Creator<Reference>() {
+//
+//		@Override
+//		public Reference createFromParcel(Parcel source) {
+//			// TODO Auto-generated method stub
+//			return new Reference(source);  //using parcelable constructor
+//		}
+//
+//		@Override
+//		public Reference[] newArray(int size) {
+//			// TODO Auto-generated method stub
+//			return new Reference[size];
+//		}
+//	};
+	
+	//------------------------------------ parcel part END ------------------------------------
+	
+	
+	
+	///////////////////////////////////////////////////////////////////////////////////////////
+	protected Reference(Parcel in) {
+		id = in.readLong();
+		titreRef = in.readString();
+		typeRef = in.readString();
+		titreAdmin = in.readString();
+		infoInterne = in.readString();
+		locVente = in.readString();
+		isLocation = in.readByte() != 0x00;
+		appartementMaison = in.readString();
+		ville = in.readString();
+		quartier = in.readString();
+		loyerOuPrix = in.readInt();
+		chargesOuCopro = in.readInt();
+		depotOuTaxe = in.readInt();
+		fraisAgence = in.readDouble();
+		latLon = (Coordinate) in.readValue(Coordinate.class.getClassLoader());
+		descriptif = in.readString();
+		surface = in.readDouble();
+		nbLotCopro = in.readInt();
+		dpe = in.readString();
+		ges = in.readString();
+		if (in.readByte() == 0x01) {
+			listeEquipements = new ArrayList<String>();
+			in.readList(listeEquipements, String.class.getClassLoader());
+		} else {
+			listeEquipements = null;
+		}
+		vignette = in.readString();
+		if (in.readByte() == 0x01) {
+			photos = new ArrayList<String>();
+			in.readList(photos, String.class.getClassLoader());
+		} else {
+			photos = null;
+		}
+		videoYoutube = in.readString();
+		disponible = in.readByte() != 0x00;
+		nouveaute = in.readByte() != 0x00;
+		visible = in.readByte() != 0x00;
+		long tmpLibreDate = in.readLong();
+		libreDate = tmpLibreDate != -1 ? new Date(tmpLibreDate) : null;
+	}
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeLong(id);
+		dest.writeString(titreRef);
+		dest.writeString(typeRef);
+		dest.writeString(titreAdmin);
+		dest.writeString(infoInterne);
+		dest.writeString(locVente);
+		dest.writeByte((byte) (isLocation ? 0x01 : 0x00));
+		dest.writeString(appartementMaison);
+		dest.writeString(ville);
+		dest.writeString(quartier);
+		dest.writeInt(loyerOuPrix);
+		dest.writeInt(chargesOuCopro);
+		dest.writeInt(depotOuTaxe);
+		dest.writeDouble(fraisAgence);
+		dest.writeValue(latLon);
+		dest.writeString(descriptif);
+		dest.writeDouble(surface);
+		dest.writeInt(nbLotCopro);
+		dest.writeString(dpe);
+		dest.writeString(ges);
+		if (listeEquipements == null) {
+			dest.writeByte((byte) (0x00));
+		} else {
+			dest.writeByte((byte) (0x01));
+			dest.writeList(listeEquipements);
+		}
+		dest.writeString(vignette);
+		if (photos == null) {
+			dest.writeByte((byte) (0x00));
+		} else {
+			dest.writeByte((byte) (0x01));
+			dest.writeList(photos);
+		}
+		dest.writeString(videoYoutube);
+		dest.writeByte((byte) (disponible ? 0x01 : 0x00));
+		dest.writeByte((byte) (nouveaute ? 0x01 : 0x00));
+		dest.writeByte((byte) (visible ? 0x01 : 0x00));
+		dest.writeLong(libreDate != null ? libreDate.getTime() : -1L);
+	}
+
+	public static final Parcelable.Creator<Reference> CREATOR = new Parcelable.Creator<Reference>() {
+		@Override
+		public Reference createFromParcel(Parcel in) {
+			return new Reference(in);
+		}
+
+		@Override
+		public Reference[] newArray(int size) {
+			return new Reference[size];
+		}
+	};
+///////////////////////////////////////////////////////////////////////////////////////////
+	
 	
 
 	/**
@@ -465,12 +663,12 @@ public class Reference {
 	}
 
 
-	public URL getVideoYoutube() {
+	public String getVideoYoutube() {
 		return videoYoutube;
 	}
 
 
-	public void setVideoYoutube(URL videoYoutube) {
+	public void setVideoYoutube(String videoYoutube) {
 		this.videoYoutube = videoYoutube;
 	}
 

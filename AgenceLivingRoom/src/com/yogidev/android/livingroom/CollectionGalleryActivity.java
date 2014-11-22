@@ -16,9 +16,7 @@
 
 package com.yogidev.android.livingroom;
 
-import java.io.IOException;
 import java.io.InputStream;
-import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -74,10 +72,28 @@ public class CollectionGalleryActivity extends FragmentActivity {
      * The {@link android.support.v4.view.ViewPager} that will display the object collection.
      */
     ViewPager mViewPager;
+    
+	// The bundle to pass and receive data to and from other activities
+	Bundle objetbunble;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+	    // Restore pref theme
+	    setTheme(PreferencesManager.getInstance().getThemePref());
+        
+	    // Get the Bundle sent by the previous activity
+	    objetbunble  = getIntent().getExtras();
+		
+	    // Create the bundle if null
+	    if (objetbunble == null) {
+	    	objetbunble = new Bundle();
+	    }
+        
         setContentView(R.layout.reference_collection_gallery);
+        
+		// set transparency 
+		getWindow().getDecorView().getRootView().setAlpha(PreferencesManager.TRANPARENCY);
 
         // Create an adapter that when requested, will return a fragment representing an object in
         // the collection.
@@ -97,6 +113,19 @@ public class CollectionGalleryActivity extends FragmentActivity {
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mDemoCollectionPagerAdapter);
     }
+    
+    public void hideSystemUI() {
+		getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+				| View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
+				| View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
+				// remove the following flag for version < API 19
+				| View.SYSTEM_UI_FLAG_IMMERSIVE); 
+    }
+    
+    public void showSystemUI() {
+		getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE); 
+    }
+    
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -164,12 +193,12 @@ public class CollectionGalleryActivity extends FragmentActivity {
         Bitmap bitmap;
     	ProgressDialog pDialog;
     	ImageView imgView;
+    	View rootView;
     	String imgUrl = "";
     	Context context;
     	Drawable defaultBackground;
     	
     	public void onAttach(Activity activity) {
-    	    // TODO Auto-generated method stub
     	    super.onAttach(activity);
     	    context = activity;
     	}
@@ -177,11 +206,27 @@ public class CollectionGalleryActivity extends FragmentActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_collection_photo, container, false);
+            rootView = inflater.inflate(R.layout.fragment_collection_photo, container, false);
+            System.out.println("root View 1 = " + rootView);
+            
+            // white background
+            System.out.println("rootView BG => NULL !");
+            rootView.setBackground(null);
+            rootView.setBackgroundColor(getActivity().getResources().getColor(R.color.white));
+            
+            //((CollectionGalleryActivity)getActivity()).showSystemUI();
+            
             Bundle args = getArguments();
             imgView = (ImageView)rootView.findViewById(android.R.id.text1);
+            
+            if (imgView != null && imgView.getParent() != null) {
+            	System.out.println("imgView.PARENT BG => NULL !");
+            	((View) imgView.getParent()).setBackground(null);
+            	((View) imgView.getParent()).setBackgroundColor(getActivity().getResources().getColor(R.color.white));
+            }
+            
             imgUrl = args.getString(PHOTO_OBJECT);
-            new DownloadImageTask(imgView).execute(imgUrl);
+            new DownloadImageTask(imgView,getResources().getDrawable(R.drawable.logo)).execute(imgUrl);
             
             // add button listener
             imgView.setOnClickListener(new OnClickListener() {
@@ -199,22 +244,8 @@ public class CollectionGalleryActivity extends FragmentActivity {
             return rootView;
         }
         
-        public static Bitmap getBitmapFromURL(String src) {
-            try {
-                URL url = new URL(src);
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                connection.setDoInput(true);
-                connection.connect();
-                InputStream input = connection.getInputStream();
-                Bitmap myBitmap = BitmapFactory.decodeStream(input);
-                return myBitmap;
-            } catch (IOException e) {
-                e.printStackTrace();
-                return null;
-            }
-        }
-        
         private class LoadImage extends AsyncTask<String, String, Bitmap> {
+        	
         	@Override
         	protected void onPreExecute() {
         		super.onPreExecute();
@@ -222,6 +253,7 @@ public class CollectionGalleryActivity extends FragmentActivity {
         		pDialog.setMessage("Loading Image ....");
         		pDialog.show();
         	}
+        	
         	protected Bitmap doInBackground(String... args) {
         		try {
         			bitmap = BitmapFactory.decodeStream((InputStream)new URL(args[0]).getContent());
@@ -230,23 +262,24 @@ public class CollectionGalleryActivity extends FragmentActivity {
         		}
         		return bitmap;
         	}
+        	
         	protected void onPostExecute(Bitmap image) {
         		if(image != null){
         			//imgView.setImageBitmap(image);
-        			System.out.println("root View = " + imgView.getRootView());
-        			imgView.getRootView().setBackground(new BitmapDrawable(image));
+        			
+        			System.out.println("GetParent() = " + (View)imgView.getParent());
+        			
+        			((View) imgView.getParent()).setBackground(new BitmapDrawable(image));
         			imgView.setVisibility(View.GONE);
+        			//((CollectionGalleryActivity)getActivity()).hideSystemUI();
         			pDialog.dismiss();
         			
-        			imgView.getRootView().setOnClickListener(new OnClickListener() {
-        				
+        			rootView.setOnClickListener(new OnClickListener() {
         				@Override
         				public void onClick(View view) {
-        			
-        					view.getRootView().setBackground(defaultBackground);
         					imgView.setVisibility(View.VISIBLE);
+        					Toast.makeText(context, "!!!!! VISIBLE !!!!!!", Toast.LENGTH_SHORT).show();
         				}
-        			
         			});
         			
         		}else{
@@ -255,6 +288,21 @@ public class CollectionGalleryActivity extends FragmentActivity {
         		}
         	}
         }
+        
+//        public static Bitmap getBitmapFromURL(String src) {
+//            try {
+//                URL url = new URL(src);
+//                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+//                connection.setDoInput(true);
+//                connection.connect();
+//                InputStream input = connection.getInputStream();
+//                Bitmap myBitmap = BitmapFactory.decodeStream(input);
+//                return myBitmap;
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//                return null;
+//            }
+//        }
     }
     
     

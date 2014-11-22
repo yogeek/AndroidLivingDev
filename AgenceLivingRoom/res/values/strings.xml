@@ -13,7 +13,11 @@
     <string name="buttonRechercherDesc">Image pour le bouton Rechercher</string>
     <string name="titreTrouverLogement">Trouvez votre logement</string>
     
+    
+    <!-- Preferences -->
+    <string name="notifPrefTitle">Notifications</string>
     <string name="notificationsPush">Notifications push</string>
+    <string name="fullScreenPrefTitle">Notifications</string>
     <string name="fullScreenMode">Mode plein écran</string>
     
     <string name="titreReference">Titre de la référénce</string>

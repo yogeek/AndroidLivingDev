@@ -118,8 +118,8 @@ public class ReferenceListAdapter extends BaseAdapter {
 
 		// Icon
 		ImageView imgView = (ImageView) view.findViewById(R.id.icon);
-		// Load the picture from the URL into the imageView
-		new DownloadImageTask(imgView).execute(ref.getVignette());
+		// Load the picture from the URL into the imageView (giving a default image in case of downloading error)
+		new DownloadImageTask(imgView,context.getResources().getDrawable(R.drawable.logo)).execute(ref.getVignette());
 
 		// Title
 		TextView firstLine = (TextView) view.findViewById(R.id.firstLine);
@@ -129,7 +129,7 @@ public class ReferenceListAdapter extends BaseAdapter {
 		secondLine.setText(ref.getTypeRef() + " - " + ref.getSurfaceInteger() + "m²");	
 		// Prix
 		TextView thirdLine = (TextView) view.findViewById(R.id.thirdLine);
-		String prix = ref.getLoyerOuPrix() + "€" + (ref.isLocation()?"/mois":"");
+		String prix = Integer.toString(ref.getLoyerOuPrix()) + "€" + (ref.isLocation()?"/mois":"");
 		thirdLine.setText(prix);
 
 		// Delete button (displayed on left swipe event)

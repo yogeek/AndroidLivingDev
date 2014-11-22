@@ -23,11 +23,12 @@
     <ImageButton android:id="@android:id/text1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/description"
         android:paddingTop="50dp"
         android:paddingBottom="50dp"
         android:scaleType="center"
 		android:background="@android:color/transparent"
-		android:src="@drawable/numero_telephone" />
+		android:src="@drawable/numero_telephone_medium" />
 
     <Button android:id="@+id/callButton"
         android:layout_width="wrap_content"

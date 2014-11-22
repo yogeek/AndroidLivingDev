@@ -1,23 +1,35 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <LinearLayout android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layout_gravity="center">
+    
+    <TextView android:id="@+id/textTitreRef"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center">
+        android:gravity="left"
+        android:text="Titre de la référence"
+        />
 
-        <Button android:id="@+id/demo_collection_button"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="Voir les photos"/>
+    <ImageButton android:id="@+id/demo_collection_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textTitreRef"
+        android:layout_marginBottom="16dp"
+        android:text="Voir les photos"
+        android:src="@drawable/logo"/>
+    
+    <TextView android:id="@+id/textDescRef"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/demo_collection_button"
+        android:gravity="left"
+        android:text="Description de la référence"
+        />
 
-        <Button android:id="@+id/demo_external_activity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Contacter le vendeur" />
+    <Button android:id="@+id/demo_external_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textDescRef"
+        android:text="Contacter le vendeur" />
 
-    </LinearLayout>
-
-</FrameLayout>
+</RelativeLayout>

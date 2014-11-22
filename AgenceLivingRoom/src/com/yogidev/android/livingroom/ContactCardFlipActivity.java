@@ -51,11 +51,21 @@ implements FragmentManager.OnBackStackChangedListener {
 	 * Whether or not we're showing the back of the card (otherwise showing the front).
 	 */
 	private boolean mShowingBack = false;
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+	    // Restore pref theme
+	    setTheme(PreferencesManager.getInstance().getThemePref());
+		
+	    // Inflate the view from XML
 		setContentView(R.layout.contact_card_flip);
+		
+		// set background layer
+		findViewById(R.id.container).setBackgroundColor(PreferencesManager.getInstance().getBackgoundColorPref());
+		// set transparency 
+		getWindow().getDecorView().getRootView().setAlpha(PreferencesManager.TRANPARENCY);
 
 		if (savedInstanceState == null) {
 			// If there is no saved instance state, add a fragment representing the
@@ -92,7 +102,7 @@ implements FragmentManager.OnBackStackChangedListener {
 		item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
 		return true;
 	}
-
+	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
@@ -122,8 +132,7 @@ implements FragmentManager.OnBackStackChangedListener {
 		// Create and commit a new fragment transaction that adds the fragment for the back of
 		// the card, uses custom animations, and is part of the fragment manager's back stack.
 
-		getFragmentManager()
-		.beginTransaction()
+		getFragmentManager().beginTransaction()
 
 		// Replace the default fragment animations with animator resources representing
 		// rotations when switching to the back of the card, as well as animator

@@ -4,6 +4,7 @@ import java.io.InputStream;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ImageView;
@@ -11,10 +12,12 @@ import android.widget.ImageView;
 // AsyckTask to download image (url given )
 public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
    ImageView bmImage;
+   Drawable defaultImage;
    
    //constructor
-   public DownloadImageTask(ImageView bmImage) {
+   public DownloadImageTask(ImageView bmImage, Drawable defaultImage) {
        this.bmImage = bmImage;
+       this.defaultImage = defaultImage;
    }
    
    // laoding picture and put it into bitmap 
@@ -33,6 +36,9 @@ public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
    
    //after downloading
    protected void onPostExecute(Bitmap result) {
-       bmImage.setImageBitmap(result);
+       if (result != null)
+    	   bmImage.setImageBitmap(result);
+       else
+    	   bmImage.setImageDrawable(defaultImage);
    }
  }

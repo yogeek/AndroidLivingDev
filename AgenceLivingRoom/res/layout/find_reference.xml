@@ -1,143 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/scroll" 
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relativeFind" 
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/garonne"
-    >
+  	android:layout_height="match_parent"
+  	>
 
-<LinearLayout 
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingLeft="50dp"
-    android:paddingRight="50dp"
-    android:scrollbars="vertical"
-    >
- 	
-	<!-- Choix de la ville -->
-   	
-    <TextView android:id="@+id/TextViewVille"
-   	android:layout_width="fill_parent"
-   	android:layout_height="wrap_content"
-   	android:text="@string/choixVille"
-   	android:layout_marginTop="10dp"
-   	android:textSize="20sp"
-   	/>
+	<!-- Footer aligned to bottom -->
+  	<RelativeLayout
+	    android:id="@+id/footer"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentBottom="true"
+	    android:gravity="center" >
 
-   	 <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/custom_bg_1">
-        
-	     <Spinner android:id="@+id/SpinnerVille"
-    		android:layout_width="fill_parent"
-    		android:layout_height="wrap_content"
-    		android:prompt="@string/promptVille"
-    		android:entries="@array/villes_array"
-    		
-    	 />
-	     <!-- android:background="@drawable/custom_bg_2"-->
-	</LinearLayout>
+	    <!-- ImageButton RECHERCHER -->
+		<ImageButton android:id="@+id/ButtonRechercher"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+			android:layout_gravity="end"
+			android:paddingBottom="50dp"
+			android:scaleType="centerInside"
+			android:contentDescription="@string/buttonRechercherDesc"
+			android:background="@android:color/transparent"
+			android:src="@drawable/bouton_rechercher_medium"
+		/>
+		
+	</RelativeLayout>
+
+	<ScrollView 
+	    android:id="@+id/scroll" 
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:layout_marginTop="20dp"
+	    android:layout_above="@id/footer"
+	    >
 	
-   	<!-- Choix du quartier -->
-   	
-    <TextView android:id="@+id/TextViewQuartier"
-   	android:layout_width="fill_parent"
-   	android:layout_height="wrap_content"
-   	android:text="@string/choixQuartier"
-   	android:layout_marginTop="20dp"
-   	android:textSize="20sp"
-   	/>
-
-   	 <LinearLayout android:id="@+id/LinearSpinnerQuartier"
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/custom_bg_1"
-        >
-	     <Spinner android:id="@+id/SpinnerQuartier"
-    		android:layout_width="fill_parent"
-    		android:layout_height="wrap_content"
-    		android:prompt="@string/promptQuartier"
-    		android:entries="@array/quartiers_array"
-    	 />
-	</LinearLayout>
-	
-    <!-- Choix du Type -->
-   	
-    <TextView android:id="@+id/TextViewType"
-   	android:layout_width="fill_parent"
-   	android:layout_height="wrap_content"
-   	android:text="@string/choixType"
-   	android:layout_marginTop="20dp"
-   	android:textSize="20sp"
-   	/>
-
-   	 <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/custom_bg_1"
-        >
-	     <Spinner android:id="@+id/SpinnerType"
-    		android:layout_width="fill_parent"
-    		android:layout_height="wrap_content"
-    		android:prompt="@string/promptType"
-    		android:entries="@array/types_array"
-    	 />
-	</LinearLayout>
-	
-   	<!-- Choix du loyer -->
-   	
-   	 <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        >
-	     
-		 <RadioGroup
-	        android:id="@+id/radioLouerVendre"
-	        android:layout_width="match_parent"
-	        android:layout_height="0dp"
-	        android:orientation="horizontal"
-	        android:gravity="center"
-	        android:layout_weight="1" >
- 
-	        <RadioButton
-	            android:id="@+id/radioLouer"
-	            android:layout_width="wrap_content"
-	            android:layout_height="match_parent"
-	            android:layout_weight="1"
-	            android:text="@string/choixLouer" 
-	            android:textSize="20sp"
-	            android:checked="true"
-	            android:onClick="onRadioButtonClicked" />
-	 
-	        <RadioButton
-	            android:id="@+id/radioVendre"
-	            android:layout_width="wrap_content"
-	            android:layout_height="match_parent"
-	            android:layout_gravity="end"
-	            android:textSize="20sp"
-	            android:text="@string/choixVendre"
-	            android:onClick="onRadioButtonClicked" />
-		 
-		 </RadioGroup>
-   	     
-		 <LinearLayout android:id="@+id/LinearSpinnerLoyer"
-	        android:orientation="horizontal"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:layout_marginTop="5dp"
-	        android:background="@drawable/custom_bg_1"
-	        >
-	        
+		<LinearLayout 
+		    android:id="@+id/relativeForm" 
+		    android:orientation="vertical"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:paddingLeft="50dp"
+		    android:paddingRight="50dp"
+		    >
+		 	
+			<!-- Choix de la ville -->
+		   	
+		    <TextView android:id="@+id/TextViewVille"
+		   	android:layout_width="match_parent"
+		   	android:layout_height="wrap_content"
+		   	android:text="@string/choixVille"
+		   	android:layout_marginTop="0dp"
+		   	android:textSize="20sp"
+		   	/>
+		        
+			<Spinner android:id="@+id/SpinnerVille"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:prompt="@string/promptVille"
+				android:entries="@array/villes_array"
+				/>
+		     <!-- android:background="@drawable/custom_bg_2"-->
+			
+		   	<!-- Choix du quartier -->
+		   	
+		    <TextView android:id="@+id/TextViewQuartier"
+			   	android:layout_width="match_parent"
+			   	android:layout_height="wrap_content"
+			   	android:text="@string/choixQuartier"
+			   	android:layout_marginTop="15dp"
+			   	android:textSize="20sp"
+			   	/>
+		
+		        
+		    <Spinner android:id="@+id/SpinnerQuartier"
+	    		android:layout_width="match_parent"
+	    		android:layout_height="wrap_content"
+	    		android:prompt="@string/promptQuartier"
+	    		android:entries="@array/quartiers_array"
+	    	 	/>
+			
+		    <!-- Choix du Type -->
+		   	
+		    <TextView android:id="@+id/TextViewType"
+			   	android:layout_width="match_parent"
+			   	android:layout_height="wrap_content"
+			   	android:text="@string/choixType"
+			   	android:layout_marginTop="15dp"
+			   	android:textSize="20sp"
+			   	/>
+		
+		        
+			<Spinner android:id="@+id/SpinnerType"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:prompt="@string/promptType"
+				android:entries="@array/types_array"
+				/>
+			
+		   	<!-- Choix du loyer -->
+		   	
+			<RadioGroup
+			      android:id="@+id/radioLouerVendre"
+			      android:layout_width="match_parent"
+			      android:layout_height="0dp"
+			      android:layout_marginTop="15dp"
+			      android:orientation="horizontal"
+			      android:gravity="center"
+			      android:layout_weight="1" >
+			
+			      <RadioButton
+			          android:id="@+id/radioLouer"
+			          android:layout_width="wrap_content"
+			          android:layout_height="match_parent"
+			          android:layout_weight="1"
+			          android:text="@string/choixLouer" 
+			          android:textSize="20sp"
+			          android:checked="true"
+			          android:onClick="onRadioButtonClicked" />
+			
+			      <RadioButton
+			          android:id="@+id/radioVendre"
+			          android:layout_width="wrap_content"
+			          android:layout_height="match_parent"
+			          android:layout_gravity="end"
+			          android:textSize="20sp"
+			          android:text="@string/choixVendre"
+			          android:onClick="onRadioButtonClicked" />
+			
+			</RadioGroup>
+		   	     
+			        
 			<!-- style="@style/MySpinnerStyle" -->
 			<Spinner android:id="@+id/SpinnerLoyer"
 				android:layout_width="match_parent"
@@ -145,22 +139,10 @@
 				android:prompt="@string/promptLoyer"
 				android:entries="@array/loyers_array"
 	    	 	/>
-		     
-	     </LinearLayout>
-	     
-	</LinearLayout>
-	
-	<!-- ImageBouton RECHERCHER -->
-	<ImageButton android:id="@+id/ButtonRechercher"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-		android:layout_marginTop="30dp"
-		android:layout_gravity="center"
-		android:scaleType="centerInside"
-		android:contentDescription="@string/buttonRechercherDesc"
-		android:background="@android:color/transparent"
-		android:src="@drawable/bouton_rechercher_medium"
-	/>
+				     
+		
+		</LinearLayout>
+			
+	</ScrollView>
 
-</LinearLayout>
-</ScrollView>
+</RelativeLayout>

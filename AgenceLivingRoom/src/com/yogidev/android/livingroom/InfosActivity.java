@@ -11,13 +11,19 @@ import android.widget.TextView;
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
 public class InfosActivity extends Activity {
 	
-	
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    
+	    // Restore pref theme
+	    setTheme(PreferencesManager.getInstance().getThemePref());
+	    
+	    // Inflate the view from XML
 	    setContentView(R.layout.info);
+	    
+		// set transparency 
+		getWindow().getDecorView().getRootView().setAlpha(PreferencesManager.TRANPARENCY);
 	    
 	    TextView textAdress = (TextView) findViewById(R.id.textInfoAdress);
 	    textAdress.setMovementMethod(LinkMovementMethod.getInstance());
