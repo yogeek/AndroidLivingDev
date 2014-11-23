@@ -237,10 +237,11 @@ public class ReferenceDescriptionActivity extends FragmentActivity implements Ac
 			descView.setText(ref.getDescriptif());
 
 			// Demonstration of a collection-browsing activity.
-			rootView.findViewById(R.id.demo_collection_button).setOnClickListener(new View.OnClickListener() {
+			collectionButton.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View view) {
 					Intent intent = new Intent(getActivity(), CollectionGalleryActivity.class);
+					intent.putExtras(getActivity().getIntent().getExtras());
 					startActivity(intent);
 				}
 			});
