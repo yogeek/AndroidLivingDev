@@ -65,6 +65,15 @@ public class ReferenceListActivity extends ListActivity implements SwipeListView
 			    new Reference(1, "T1 - 20 m² ", "T1", "Toulouse", "Hypercentre", "Location", 350, 20, "http://www.agence-livingroom.com/references/1110/photo_reference.jpg", "Dans petite résidence, au calme, récente et fermée. T2 de 43m² avec terrasse de 20m² au 3éme et dernier étage. Séjour, cuisine séparée, chambre avec placard, salle de bains, parking. Chauffage individuel électrique.")
 				));
 		
+		ArrayList<String> eqtList1 = new ArrayList<String>(Arrays.asList("Parking","Gardien"));
+		referenceList.get(0).setListeEquipements(eqtList1);
+		ArrayList<String> eqtList2 = new ArrayList<String>(Arrays.asList("Double vitrage","Parking"));
+		referenceList.get(0).setListeEquipements(eqtList2);
+		ArrayList<String> eqtList3 = new ArrayList<String>(Arrays.asList("Double vitrage","Gardien"));
+		referenceList.get(0).setListeEquipements(eqtList3);
+		ArrayList<String> eqtList4 = new ArrayList<String>(Arrays.asList("Parking"));
+		referenceList.get(0).setListeEquipements(eqtList4);
+		
         mAdapter = new ReferenceListAdapter(this, referenceList);
 //	    mListView.setAdapter(mAdapter);
 	    setListAdapter(mAdapter);
